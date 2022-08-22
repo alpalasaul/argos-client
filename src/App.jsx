@@ -1,9 +1,9 @@
-import Navbar from './components/Navbar' 
 import ListFrame from './components/ListFrames' 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './components/Home'
+import Home from './pages/Home'
 import SharedLayout from './components/SharedLayout'
 import Streaming from './components/Streaming'
+import About from './pages/About'
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
           <Route index element={<Home/>}/>
             <Route path='videos' element={<ListFrame/>}/>
             <Route path='streaming' element={<Streaming/>}/>
-            <Route path='about' element={<div>About</div>}/>
+            <Route path='about' element={<About/>}/>
           </Route>
         
         </Routes>        

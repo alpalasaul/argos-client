@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
-import Navbar from './Navbar'
-import Hero from './../assets/hero.png'
+import { Link } from 'react-router-dom'
+import delivery from './../assets/delivery.png'
+import home from './../assets/home.png'
 
 const Home = () => {
   return (
@@ -10,20 +10,20 @@ const Home = () => {
         <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
           {/* <!--Left Col--> */}
           <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-            <p className="uppercase tracking-loose w-full">What business are you?</p>
+            <p className="uppercase tracking-loose w-full">Visión por computadora</p>
             <h1 className="my-4 text-5xl font-bold leading-tight">
-              Main Hero Message to sell yourself!
+              ¡Conduce respetando las normas de seguridad!
             </h1>
             <p className="leading-normal text-2xl mb-8">
-              Sub-hero message, not too long and not too short. Make it just right!
+              Monitoreo 24/7 para detectar infractores en las vías de Ecuador. ¡Ponte pilas! 
             </p>
-            <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-              Subscribe
-            </button>
+            <div className='mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out'>
+              <Link to="/streaming">¡Comienza a monitorear!</Link>
+            </div>
           </div>
           {/* <!--Right Col--> */}
           <div className="w-full md:w-3/5 py-6 text-center">
-            <img className="w-full md:w-4/5 z-50" src={ Hero } />
+            <img className="w-full md:w-4/5 z-50" src={ home } />
           </div>
         </div>
       </div>
@@ -31,8 +31,8 @@ const Home = () => {
 
       <div className="relative -mt-12 lg:-mt-24">
       <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-          <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
+        <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+          <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fillRule="nonzero">
             <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.100000001"></path>
             <path
               d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
@@ -40,7 +40,7 @@ const Home = () => {
             ></path>
             <path d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z" id="Path-4" opacity="0.200000003"></path>
           </g>
-          <g transform="translate(-4.000000, 76.000000)" fill="#FFFFFF" fill-rule="nonzero">
+          <g transform="translate(-4.000000, 76.000000)" fill="#FFFFFF" fillRule="nonzero">
             <path
               d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z"
             ></path>
@@ -53,7 +53,7 @@ const Home = () => {
     <section className="bg-white border-b py-8">
       <div className="container max-w-5xl mx-auto m-8">
         <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-          Title
+          Proyecto final en Minería de Datos
         </h2>
         <div className="w-full mb-4">
           <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -61,20 +61,14 @@ const Home = () => {
         <div className="flex flex-wrap">
           <div className="w-5/6 sm:w-1/2 p-6">
             <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-              Lorem ipsum dolor sit amet
+              ¿Qué es minería de datos?
             </h3>
             <p className="text-gray-600 mb-8">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
-              <br />
-              <br />
-
-              Images from:
-
-              <a className="text-pink-500 underline" href="https://undraw.co/">undraw.co</a>
+              La minería de datos es el proceso de hallar anomalías, patrones y correlaciones en grandes conjuntos de datos para predecir resultados. Empleando una amplia variedad de técnicas, puede utilizar esta información para incrementar sus ingresos, recortar costos, mejorar sus relaciones con clientes, reducir riesgos y más.
             </p>
           </div>
           <div className="w-full sm:w-1/2 p-6">
-            <svg className="w-full sm:h-64 mx-auto" viewBox="0 0 1177 598.5" xmlns="http://www.w3.org/2000/svg">
+            {/* <svg className="w-full sm:h-64 mx-auto" viewBox="0 0 1177 598.5" xmlns="http://www.w3.org/2000/svg">
               <title>travel booking</title>
               <path
                 transform="translate(-11.5 -150.75)"
@@ -87,8 +81,8 @@ const Home = () => {
                 d="M119.9,721.42c-3-5.51.4-12.27,4.29-17.18s8.61-10,8.51-16.29c-.15-9-9.7-14.31-17.33-19.09a84,84,0,0,1-15.56-12.51A22.8,22.8,0,0,1,95,650c-1.58-3.52-1.54-7.52-1.44-11.37q.51-19.26,1.91-38.49"
                 fill="none"
                 stroke="#3f3d56"
-                stroke-miterlimit="10"
-                stroke-width="4"
+                strokeMiterlimit="10"
+                strokeWidth="4"
               />
               <path transform="translate(-11.5 -150.75)" d="M81,599.39a14,14,0,0,1,7-11.5l3.14,6.22-.1-7.53a14.22,14.22,0,0,1,4.63-.56A14,14,0,1,1,81,599.39Z" fill="#57b894" />
               <path transform="translate(-11.5 -150.75)" d="M106,694.38a14,14,0,1,0-.68-11.3l8.77,7.13L104.46,688A14,14,0,0,0,106,694.38Z" fill="#57b894" />
@@ -114,19 +108,19 @@ const Home = () => {
               <circle cx="193" cy="127.75" r="6" fill="#ff6347" />
               <circle cx="208" cy="127.75" r="6" fill="#ff6347" />
               <circle cx="223" cy="127.75" r="6" fill="#ff6347" />
-              <path transform="translate(-11.5 -150.75)" d="M387.5,490A66.5,66.5,0,1,1,321,423.5,66.47,66.47,0,0,1,387.5,490Z" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="2" />
-              <path transform="translate(-11.5 -150.75)" d="M325.38,467.23l8.3,13,35.53,55.59a66.5,66.5,0,0,1-103.32-8.57l43.54-84.94.91,1.43" fill="none" stroke="#f2f2f2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              <path transform="translate(-11.5 -150.75)" d="M387.5,490A66.5,66.5,0,1,1,321,423.5,66.47,66.47,0,0,1,387.5,490Z" fill="none" stroke="#f2f2f2" strokeMiterlimit="10" strokeWidth="2" />
+              <path transform="translate(-11.5 -150.75)" d="M325.38,467.23l8.3,13,35.53,55.59a66.5,66.5,0,0,1-103.32-8.57l43.54-84.94.91,1.43" fill="none" stroke="#f2f2f2" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
               <path
                 transform="translate(-11.5 -150.75)"
                 d="M385.31,507a66.46,66.46,0,0,1-16.1,28.82l-35.53-55.59,15.69-24.78a.66.66,0,0,1,1.1,0C353.76,460.32,371,486,385.31,507Z"
                 fill="none"
                 stroke="#f2f2f2"
-                stroke-miterlimit="10"
-                stroke-width="2"
+                strokeMiterlimit="10"
+                strokeWidth="2"
               />
-              <path transform="translate(-11.5 -150.75)" d="M337.5,452.5a15,15,0,0,1-12.12,14.73l-15-23.51a15,15,0,0,1,27.16,8.78Z" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="2" />
-              <path transform="translate(-11.5 -150.75)" d="m347.5 481.5" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="2" />
-              <path transform="translate(-11.5 -150.75)" d="m333.5 480.5" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="2" />
+              <path transform="translate(-11.5 -150.75)" d="M337.5,452.5a15,15,0,0,1-12.12,14.73l-15-23.51a15,15,0,0,1,27.16,8.78Z" fill="none" stroke="#f2f2f2" strokeMiterlimit="10" strokeWidth="2" />
+              <path transform="translate(-11.5 -150.75)" d="m347.5 481.5" fill="none" stroke="#f2f2f2" strokeMiterlimit="10" strokeWidth="2" />
+              <path transform="translate(-11.5 -150.75)" d="m333.5 480.5" fill="none" stroke="#f2f2f2" strokeMiterlimit="10" strokeWidth="2" />
               <path
                 transform="translate(-11.5 -150.75)"
                 d="M563.51,413.13c-.35,0-1.51,0-1.83,0l-6.61.17a.19.19,0,0,1-.17-.09L545,398.42a1.61,1.61,0,0,0-1.37-.75h-2.41c-.57,0-.77.57-.56,1.1l5.09,14.52a.2.2,0,0,1-.18.28l-12.45.18a.81.81,0,0,1-.67-.31l-3.77-4.58a1.59,1.59,0,0,0-1.28-.62h-1.71a.4.4,0,0,0-.38.54l2,7a1.68,1.68,0,0,1,0,1.21l-2,7a.39.39,0,0,0,.38.53h1.7a1.62,1.62,0,0,0,1.28-.62l3.84-4.64a.82.82,0,0,1,.67-.32l12.38.27a.21.21,0,0,1,.18.28L540.65,434c-.21.53,0,1.1.56,1.1h2.41a1.61,1.61,0,0,0,1.37-.76l9.91-14.81a.2.2,0,0,1,.17-.09l6.61.17c.33,0,1.48,0,1.83,0,4.5,0,7.35-1.45,7.35-3.25S568,413.13,563.51,413.13Z"
@@ -198,7 +192,9 @@ const Home = () => {
                 d="M998.23,509.4A15.27,15.27,0,0,1,1014,512c5.47,4.88,6.57,12.85,8,20s4.17,15.21,11,18a28.35,28.35,0,0,1-9.19-.27l10.25,9.19-17.27-5.63c-5.42-1.77-11.11-3.56-16.72-2.56-9.3,1.65-15.78,10.4-24.71,13.47l1-4.85-6,0a11.75,11.75,0,0,0,3.43-4,3.27,3.27,0,0,0-2.29-1.2c-2.5-15.59,6.76-31,18.81-41.17,2.38-2,5-3.92,8.06-4.42s6.64.87,7.71,3.78"
                 fill="#3c354c"
               />
-            </svg>
+            </svg> */}
+            <img src={ delivery } alt="Delivery" />
+          
           </div>
         </div>
         <div className="flex flex-wrap flex-col-reverse sm:flex-row">
@@ -332,8 +328,8 @@ const Home = () => {
                 fill="none"
                 opacity=".8"
                 stroke="#ff6347"
-                stroke-miterlimit="10"
-                stroke-width="2"
+                strokeMiterlimit="10"
+                strokeWidth="2"
               />
               <path
                 transform="translate(-11.697 -13.011)"
@@ -341,8 +337,8 @@ const Home = () => {
                 fill="none"
                 opacity=".8"
                 stroke="#ff6347"
-                stroke-miterlimit="10"
-                stroke-width="2"
+                strokeMiterlimit="10"
+                strokeWidth="2"
               />
               <circle cx="214.07" cy="310.65" r="11.968" fill="#ff6347" />
               <circle cx="322.2" cy="566.52" r="11.968" fill="#ff6347" />
@@ -354,15 +350,14 @@ const Home = () => {
           <div className="w-full sm:w-1/2 p-6 mt-6">
             <div className="align-middle">
               <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-                Lorem ipsum dolor sit amet
+                Objetivo del proyecto
               </h3>
               <p className="text-gray-600 mb-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                Poner a disposición del público el uso de la plataforma para el monitoreo de infracciones en los motociclistas por no respetar las normas de seguridad.
                 <br />
                 <br />
-                Images from:
 
-                <a className="text-pink-500 underline" href="https://undraw.co/">undraw.co</a>
+                ¡Todo proyecto empieza desde cero!
               </p>
             </div>
           </div>
@@ -377,7 +372,7 @@ const Home = () => {
         <div className="container mx-auto px-8">
           <div className="w-full flex flex-col md:flex-row py-6">
             <div className="flex-1 mb-6 text-black">
-              <a className="text-indigo-500 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+              <a className="text-indigo-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
                 {/* <!--Icon from: http://www.potlabicons.com/ --> */}
                 <svg className="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005">
                   <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502" transform="matrix(1,0,0,1,0,0)" />
@@ -386,7 +381,7 @@ const Home = () => {
                     d=" M 510.7 189.151 C 505.271 168.95 484.565 156.956 464.365 162.385 L 330.156 198.367 L 155.924 35.878 L 107.19 49.008 L 211.729 230.183 L 86.232 263.767 L 36.614 224.754 L 0 234.603 L 45.957 314.27 L 65.274 347.727 L 105.802 336.869 L 240.011 300.886 L 349.726 271.469 L 483.935 235.486 C 504.134 230.057 516.129 209.352 510.7 189.151 Z "
                   />
                 </svg>
-                HELMET DETECTION CAM
+                HELMET DETECTION
               </a>
             </div>
             <div className="flex-1">

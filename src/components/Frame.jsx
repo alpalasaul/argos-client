@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Modal from 'react-modal'
-import Moto from './../assets/Modelos-de-moto.png'
 
 const customStyles = {
   content: {
@@ -15,10 +14,7 @@ const customStyles = {
 
 const Frame = ({ frame }) => {
 
-  const [src, setSrc] = useState("")
-
   const { id, createdTime, name } = frame
-
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
@@ -29,16 +25,12 @@ const Frame = ({ frame }) => {
     setIsOpen(false);
   }
 
-  useEffect(() => {
-    setSrc(`https://drive.google.com/file/d/${id}/preview`)
-  }, [])
+  function putSrc(id) {
+    return `https://drive.google.com/file/d/${id}/preview`
+  }
 
   const formatDate = (createdTime) => {
     return createdTime.split('T')[0]
-  }
-
-  const showModal = (id) => {
-    console.log('Show ...', id)
   }
     
   return (
@@ -50,7 +42,7 @@ const Frame = ({ frame }) => {
 
       <iframe 
         className='mx-3 my-3 rounded-lg'
-        src={ src }
+        src={ putSrc(id) }
         width="384" 
         height="216" 
         allow="autoplay"
@@ -81,7 +73,7 @@ const Frame = ({ frame }) => {
 
             <iframe 
               className='mx-3 my-3'
-              src={ src }
+              src={ putSrc(id) }
               width="854" 
               height="480" 
               allow="autoplay"

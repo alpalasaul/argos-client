@@ -18,7 +18,7 @@ const Streaming = () => {
 
   return (
     <div>
-      <p className="text-lg mt-5 text-center mb-5">
+      <p className="text-3xl mt-5 text-center mb-5 font-bold">
           Capturando Live Strem desde {''}
           <span className="text-indigo-600 font-bold uppercase">camara IP</span>
       </p>
@@ -51,9 +51,9 @@ const Streaming = () => {
               height="480" 
               src={`https://www.youtube.com/embed/${id}?controls=0&autoplay=1`}
               title="YouTube video player" 
-              frameborder="0" 
+              frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen
+              allowFullScreen
             />
           </div>
           <div className="flex justify-center mt-5">
