@@ -50,14 +50,14 @@ const Frame = ({ frame }) => {
 
       <div className='flex justify-between mx-3 mt-4'>
         <a 
-            className='bg-amber-500 hover:bg-lime-600 text-white font-bold px-2 rounded'
+            className='bg-amber-500 hover:bg-lime-600 text-white font-bold py-0.5 px-2.5 rounded'
             href={`https://drive.google.com/uc?export=download&id=${id}`}
           >
           Descargar
         </a>
 
         <button 
-            className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold px-2 rounded'
+            className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-0.5 px-2.5 rounded'
             onClick={openModal}
           >
           Maximizar
