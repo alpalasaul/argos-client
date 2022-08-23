@@ -4,8 +4,8 @@ import { Link } from "react-router-dom"
 const Streaming = () => {
 
   const [source, setSource] = useState("")
-  const [show, setShow] = useState(false)
-  const [id, setId] = useState("")
+  const [show, setShow] = useState(true)
+  const [id, setId] = useState("qgNTbBn0JCY")
 
   const openStream = () =>{
     console.log('Streming...')

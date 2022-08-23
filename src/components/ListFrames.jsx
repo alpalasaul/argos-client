@@ -43,6 +43,7 @@ const ListFrames = () => {
 
     useEffect(() => {
       getData()
+      // return () => getData
     }, [])
 
     const loadVideos = async () => {
