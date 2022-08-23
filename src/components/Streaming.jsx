@@ -19,8 +19,9 @@ const Streaming = () => {
   return (
     <div>
       <p className="text-3xl mt-5 text-center mb-5 font-bold">
-          Capturando Live Strem desde {''}
-          <span className="text-indigo-600 font-bold uppercase">camara IP</span>
+          Capturando {''}
+          <span className="text-indigo-600 font-bold uppercase">Live Stream </span>
+          desde una cámara IP
       </p>
 
       <div className="flex justify-center">
@@ -43,13 +44,12 @@ const Streaming = () => {
       </div>
 
       { show &&
-
         <div>
           <div className='flex justify-center mt-5'>
             <iframe 
               width="854" 
               height="480" 
-              src={`https://www.youtube.com/embed/${id}?controls=0&autoplay=1`}
+              src={`https://www.youtube.com/embed/${id}?controls=1&autoplay=1`}
               title="YouTube video player" 
               frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -63,8 +63,6 @@ const Streaming = () => {
           </div>
 
         </div>
-
-
       }
       
     </div>

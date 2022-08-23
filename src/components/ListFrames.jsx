@@ -47,8 +47,10 @@ const ListFrames = () => {
 
     const loadVideos = async () => {
       const size = 6
-      getData(size, nextToken)
-      setCounter(counter + 1)
+      if (nextToken !== undefined) {
+        getData(size, nextToken)
+        setCounter(counter + 1)
+      }
     }
 
     const home = async () => {
@@ -61,8 +63,8 @@ const ListFrames = () => {
     <div>
       <div>
         <p className="text-3xl mt-5 text-center mb-5 font-bold">
-          Todos los videos {''}
-          <span className="text-indigo-600 font-bold">predecidos por el modelo {''}</span>
+          Todos los objetos {''}
+          <span className="text-indigo-600 font-bold">detectados por el modelo {''}</span>
           aparecerán aquí 🕵🏻
         </p>
       </div>
@@ -77,19 +79,33 @@ const ListFrames = () => {
           Página: { counter }
         </span>
         <button 
-          className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded'
+          className={nextToken !== undefined 
+            ? 
+            'bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded' 
+            : 
+            'bg-indigo-800 text-white font-bold py-2 px-4 rounded'}
           onClick={loadVideos}
+          disabled={nextToken === undefined}
         >
-          Cargar más videos
+          {nextToken !== undefined ? "Cargar más videos" : "No hay más por aquí"}
         </button>
       </div>
       <div className="flex flex-wrap justify-center">
-        {
+        { data && data.length
+        ?
           data.map(frame => 
             <Frame 
             key={ frame.id } 
             frame={ frame }/>
           )
+        :
+          <div>
+            <p className="text-lg mt-5 text-center mb-5">
+              No hay videos para mostrar, carga un {''}
+              <span className="text-indigo-600 font-bold"> Live Stream {''}</span>
+              y aparecerán aquí.
+            </p>
+          </div>
         }
       </div>
     </div>

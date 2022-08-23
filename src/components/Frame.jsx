@@ -35,25 +35,34 @@ const Frame = ({ frame }) => {
     
   return (
     <div className='bg-white shadow-md rounded-lg py-5 px-5 text-center mx-2 my-2 text-gray-500'>
-      <div className='flex justify-between'>
+      <div className='flex justify-between mx-4'>
         <p className='uppercase'>{ name.replace('.mp4', '') }</p>
         <p>{ formatDate(createdTime) }</p>
       </div>
 
       <iframe 
-        className='mx-3 my-3 rounded-lg'
+        className='mx-3 my-3'
         src={ putSrc(id) }
         width="384" 
         height="216" 
         allow="autoplay"
       />
 
-      <button 
-          className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded'
-          onClick={openModal}
-        >
-        Ver en pantalla completa
-      </button>
+      <div className='flex justify-between mx-3 mt-4'>
+        <a 
+            className='bg-amber-500 hover:bg-lime-600 text-white font-bold px-2 rounded'
+            href={`https://drive.google.com/uc?export=download&id=${id}`}
+          >
+          Descargar
+        </a>
+
+        <button 
+            className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold px-2 rounded'
+            onClick={openModal}
+          >
+          Maximizar
+        </button>
+      </div>
 
       <div className='container w-1/2 h-1/2 flex justify-center text-center'>
 

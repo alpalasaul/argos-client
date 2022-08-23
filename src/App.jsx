@@ -12,14 +12,12 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-
           <Route path='/' element={<SharedLayout/>}>
           <Route index element={<Home/>}/>
             <Route path='videos' element={<ListFrame/>}/>
             <Route path='streaming' element={<Streaming/>}/>
             <Route path='about' element={<About/>}/>
           </Route>
-        
         </Routes>        
       </BrowserRouter>
 

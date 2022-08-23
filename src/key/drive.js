@@ -26,7 +26,7 @@ const drive = google.drive({
     auth: oauth2Client
 })
 
-export default uploadImage = async () => {
+const uploadImage = async () => {
     try {
         const response = await drive.files.create({
             requestBody: {
@@ -45,3 +45,19 @@ export default uploadImage = async () => {
         console.log(err.message)
     }
 }
+
+const dowloadVideo = async () => {
+    try {
+        const result = await drive.files.export({
+            fileId: "12KyNa6b-wZJw5HF82xOGh5xzJQYZNQwa",
+            mimeType: 'video/mp4',
+        });
+        console.log(result.status);
+        return result;
+    } catch (err) {
+    // TODO(developer) - Handle error
+    throw err;
+    }
+}
+
+dowloadVideo()
