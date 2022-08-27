@@ -50,7 +50,7 @@ const Frame = ({ frame }) => {
 
       <video 
               controls="" 
-              // autoPlay="" 
+              autoplay="" 
               width="384" 
               height="216" 
               name="media"
@@ -101,7 +101,7 @@ const Frame = ({ frame }) => {
 
       <video video 
               controls="" 
-              // autoPlay="" 
+              autoplay="" 
               width="854" 
               height="480" 
               name="media"
