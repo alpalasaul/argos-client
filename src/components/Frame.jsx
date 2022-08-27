@@ -40,13 +40,24 @@ const Frame = ({ frame }) => {
         <p>{ formatDate(createdTime) }</p>
       </div>
 
-      <iframe 
+      {/* <iframe 
         className='mx-3 my-3'
         src={ putSrc(id) }
         width="384" 
         height="216" 
         allow="autoplay"
-      />
+      /> */}
+
+      <video 
+              controls="" 
+              // autoPlay="" 
+              width="384" 
+              height="216" 
+              name="media"
+            >
+              <source src="https://d1wzcuoplm7ums.cloudfront.net/test_gd.mp4" type="video/mp4"/>
+      </video>
+      
 
       <div className='flex justify-between mx-3 mt-4'>
         <a 
@@ -80,13 +91,23 @@ const Frame = ({ frame }) => {
             <p>{ formatDate(createdTime) }</p>
           </div>
 
-            <iframe 
+            {/* <iframe 
               className='mx-3 my-3'
               src={ putSrc(id) }
               width="854" 
               height="480" 
               allow="autoplay"
-            />
+            /> */}
+
+      <video video 
+              controls="" 
+              // autoPlay="" 
+              width="854" 
+              height="480" 
+              name="media"
+            >
+              <source src="https://d1wzcuoplm7ums.cloudfront.net/test_gd.mp4" type="video/mp4"/>
+      </video>
               
             <button 
               className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded mt-5' 
