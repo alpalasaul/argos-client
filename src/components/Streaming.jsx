@@ -25,9 +25,6 @@ const Streaming = ({ urlStreaming ,setUrlStreaming }) => {
       setUrlStreaming(urlStreaming)
     } catch (err) {
       console.log(err.response)
-    } finally {
-      setShow(false)
-      setUrlStreaming("")
     }
   }
 
