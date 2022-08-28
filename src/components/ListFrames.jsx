@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Frame from "./Frame"
 import axios from "axios"
-import generateToken from "./../key/token.js"
+// import generateToken from "./../key/token.js"
 
 const ListFrames = () => {
 
@@ -13,32 +13,39 @@ const ListFrames = () => {
     
     const getData = async (size = 6, nextPage = "") => {
 
-      const access_token = await generateToken
-      try {
-        const response = await axios.get(URL, {
-          headers: {
-            'Authorization' : `Bearer ${access_token}`
-          }, 
-          params: {
-            q: "'1bjr3CZjwzYsEGYupNnnsW8_YMFuIMRl-' in parents",
-            pageSize: size,
-            orderBy: "folder,createdTime desc,name",
-            fields: "nextPageToken,files(id,name,createdTime,modifiedTime,size)",
-            pageToken: nextPage !== "" ? nextPage : ""
-          },
-          paramsSerializer: (params) => {
-            let result = '';
-            Object.keys(params).forEach(key => {
-                result += `${key}=${encodeURIComponent(params[key])}&`;
-            });
-            return result.substring(0, result.length - 1);
-          }
-        })
-        setData(response.data.files)
-        setNextToken(response.data.nextPageToken)
-      } catch(err) {
-        console.log(err.response)
-      }
+      // const access_token = await generateToken
+      // try {
+      //   const response = await axios.get(URL, {
+      //     headers: {
+      //       'Authorization' : `Bearer ${access_token}`
+      //     }, 
+      //     params: {
+      //       q: "'1bjr3CZjwzYsEGYupNnnsW8_YMFuIMRl-' in parents",
+      //       pageSize: size,
+      //       orderBy: "folder,createdTime desc,name",
+      //       fields: "nextPageToken,files(id,name,createdTime,modifiedTime,size)",
+      //       pageToken: nextPage !== "" ? nextPage : ""
+      //     },
+      //     paramsSerializer: (params) => {
+      //       let result = '';
+      //       Object.keys(params).forEach(key => {
+      //           result += `${key}=${encodeURIComponent(params[key])}&`;
+      //       });
+      //       return result.substring(0, result.length - 1);
+      //     }
+      //   })
+      //   setData(response.data.files)
+      //   setNextToken(response.data.nextPageToken)
+      // } catch(err) {
+      //   console.log(err.response)
+      // }
+      setData([
+        {id: '1', createdTime: "2022-01-1T00", name : "test"},
+        {id: '2', createdTime: "2022-01-1T00", name : "test1"},
+        {id: '3', createdTime: "2022-01-1T00", name : "test2"},
+
+      
+      ])
     }
 
     useEffect(() => {

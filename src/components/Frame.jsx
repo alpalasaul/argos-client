@@ -49,29 +49,29 @@ const Frame = ({ frame }) => {
       /> */}
 
       <video 
-              controls="" 
+              controls=""
               autoplay="" 
               width="384" 
               height="216" 
               name="media"
             >
-              <source src="https://d1wzcuoplm7ums.cloudfront.net/test_gd.mp4" type="video/mp4"/>
+              <source src="https://d1wzcuoplm7ums.cloudfront.net/s2865128.mp4" type="video/mp4"/>
       </video>
       
 
-      <div className='flex justify-between mx-3 mt-4'>
-        <a 
+      <div className='flex justify-center mx-3 mt-4'>
+        {/* <a 
             className='bg-amber-500 hover:bg-lime-600 text-white font-bold py-0.5 px-2.5 rounded'
             href={`https://drive.google.com/uc?export=download&id=${id}`}
           >
           Descargar
-        </a>
+        </a> */}
 
         <button 
             className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-0.5 px-2.5 rounded'
             onClick={openModal}
           >
-          Maximizar
+          Ver en pantalla completa
         </button>
       </div>
 
@@ -100,13 +100,13 @@ const Frame = ({ frame }) => {
             /> */}
 
       <video video 
-              controls="" 
+              controls="true" 
               autoplay="" 
               width="854" 
               height="480" 
               name="media"
             >
-              <source src="https://d1wzcuoplm7ums.cloudfront.net/test_gd.mp4" type="video/mp4"/>
+              <source src="https://d1wzcuoplm7ums.cloudfront.net/s2865128.mp4" type="video/mp4"/>
       </video>
               
             <button 
