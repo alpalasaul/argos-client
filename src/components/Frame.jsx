@@ -26,7 +26,7 @@ const Frame = ({ bucket }) => {
   }
 
   function putSrc(id) {
-    return `https://drive.google.com/file/d/${id}/preview`
+    return `https://d1wzcuoplm7ums.cloudfront.net/${id}`
   }
 
   const formatDate = (date) => {
@@ -50,7 +50,7 @@ const Frame = ({ bucket }) => {
               height="216" 
               name="media"
             >
-              <source src="https://d1wzcuoplm7ums.cloudfront.net/s2865128.mp4" type="video/mp4"/>
+              <source src={putSrc(id)} type="video/mp4"/>
       </video>
       
 
@@ -87,7 +87,7 @@ const Frame = ({ bucket }) => {
               height="480" 
               name="media"
             >
-              <source src="https://d1wzcuoplm7ums.cloudfront.net/s2865128.mp4" type="video/mp4"/>
+              <source src={putSrc(id)} type="video/mp4"/>
       </video>
               
             <button 
