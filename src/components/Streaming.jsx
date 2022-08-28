@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 
-const server = "http://azure/linode/184.123.456-.1"
+const SERVER_URL = "http://azure/linode/184.123.456-.1"
 
 const Streaming = ({ urlStreaming ,setUrlStreaming }) => {
 
@@ -15,7 +15,7 @@ const Streaming = ({ urlStreaming ,setUrlStreaming }) => {
     let split = replace.split('&')
     const urlStreaming = `https://www.youtube.com/embed/${split[0]}?controls=0&autoplay=1` 
     try {
-      const response = await axios.get(URL + 'stream', {
+      const response = await axios.get(SERVER_URL + 'stream', {
         params: {
           stream_url: urlStreaming
         }
@@ -30,7 +30,7 @@ const Streaming = ({ urlStreaming ,setUrlStreaming }) => {
 
   const closeStream = async () => {
     try {
-      const response = await axios.get(URL + 'stop')
+      const response = await axios.get(SERVER_URL + 'stop')
       console.log(response.data) // crear un componente de mensaje
     } catch(err) {
       console.log(err.response)
