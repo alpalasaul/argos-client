@@ -19,8 +19,6 @@ const ListFrames = () => {
     const res = fetchData.length / 6
     const numPages = Number.isInteger(res) ? res : parseInt(res) + 1
     setNumPage(numPages)
-    console.log(paginator(numPages, fetchData))
-
     const paginador = paginator(numPages, fetchData)
     setSheets(paginador)
     setPage(paginador[counter])

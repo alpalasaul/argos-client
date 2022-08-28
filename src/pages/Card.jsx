@@ -5,7 +5,7 @@ const Card = ({ card }) => {
     const {src, assignment, name, details, country, mail, team} = card
 
   return (
-    <div className="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden mx-2">
+    <div className="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden mx-2 mt-5">
         <img className="w-full h-56 object-cover object-center" src={ src} alt="avatar"/>
         <div className="flex items-center px-6 py-3 bg-gray-900">
             <svg className="h-6 w-6 text-white fill-current" viewBox="0 0 512 512">

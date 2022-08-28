@@ -44,8 +44,8 @@ const Frame = ({ bucket }) => {
 
       <video 
               className='mx-3 my-3'
-              controls=""
-              autoplay="" 
+              controls={false}
+              autoPlay={true} 
               width="384" 
               height="216" 
               name="media"
@@ -81,8 +81,8 @@ const Frame = ({ bucket }) => {
           </div>
 
       <video video 
-              controls="true" 
-              autoplay="" 
+              controls={true}
+              autoPlay={true} 
               width="854" 
               height="480" 
               name="media"
