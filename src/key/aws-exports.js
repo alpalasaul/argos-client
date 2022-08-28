@@ -16,18 +16,21 @@ const paramsVideos = {
     Prefix: 'videos/'
 }
 
-const fetchDataS3 = async (param) => {
-    const params = param === 'images' ? paramsImages : paramsVideos
+const params = { 
+    Bucket: 'helmet-detection-data'
+}
+
+const fetchDataS3 = async () => {
+    // const params = param === 'images' ? paramsImages : paramsVideos
     const data = await s3.listObjects(params).promise();
-    // console.log(data)
     return data
 }
 
-const listObjectsBucket = async (param) => {
+const listObjectsBucket = async () => {
     const data = [];
-    const response = await fetchDataS3(param)
+    const response = await fetchDataS3()
     response.Contents.forEach(item => {
-        const id = (item.Key).replace(param + '/', "")
+        const id = item.Key
         const date = (item.LastModified / 1000)
         data.push({id, date})
     });

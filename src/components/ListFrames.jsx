@@ -1,71 +1,52 @@
 import { useEffect, useState } from "react"
 import Frame from "./Frame"
-import axios from "axios"
-// import generateToken from "./../key/token.js"
+import listObjectsBucket from './../key/aws-exports.js'
 
 const ListFrames = () => {
 
-    const [data, setData] = useState([])
-    const [nextToken, setNextToken] = useState("")
-    const [counter, setCounter] = useState(1)
-    
-    const URL = `https://www.googleapis.com/drive/v3/files`
-    
-    const getData = async (size = 6, nextPage = "") => {
+  const [numPage, setNumPage] = useState(0)
+  const [counter, setCounter] = useState(1)
+  const [page, setPage] = useState([])
+  const [sheets, setSheets] = useState({})
 
-      // const access_token = await generateToken
-      // try {
-      //   const response = await axios.get(URL, {
-      //     headers: {
-      //       'Authorization' : `Bearer ${access_token}`
-      //     }, 
-      //     params: {
-      //       q: "'1bjr3CZjwzYsEGYupNnnsW8_YMFuIMRl-' in parents",
-      //       pageSize: size,
-      //       orderBy: "folder,createdTime desc,name",
-      //       fields: "nextPageToken,files(id,name,createdTime,modifiedTime,size)",
-      //       pageToken: nextPage !== "" ? nextPage : ""
-      //     },
-      //     paramsSerializer: (params) => {
-      //       let result = '';
-      //       Object.keys(params).forEach(key => {
-      //           result += `${key}=${encodeURIComponent(params[key])}&`;
-      //       });
-      //       return result.substring(0, result.length - 1);
-      //     }
-      //   })
-      //   setData(response.data.files)
-      //   setNextToken(response.data.nextPageToken)
-      // } catch(err) {
-      //   console.log(err.response)
-      // }
-      setData([
-        {id: '1', createdTime: "2022-01-1T00", name : "test"},
-        {id: '2', createdTime: "2022-01-1T00", name : "test1"},
-        {id: '3', createdTime: "2022-01-1T00", name : "test2"},
+  useEffect(() => {
+    getData()
+    // return () => getData
+  }, [])
+  
+  const getData = async () => {
+    const fetchData = await listObjectsBucket()
+    const res = fetchData.length / 6
+    const numPages = Number.isInteger(res) ? res : parseInt(res) + 1
+    setNumPage(numPages)
+    console.log(paginator(numPages, fetchData))
 
-      
-      ])
+    const paginador = paginator(numPages, fetchData)
+    setSheets(paginador)
+    setPage(paginador[counter])
+  }
+
+  const nextPage = () => {
+    if (counter < numPage) {
+      setCounter(counter + 1) 
+      setPage(sheets[counter + 1])
     }
+  }
 
-    useEffect(() => {
-      getData()
-      // return () => getData
-    }, [])
-
-    const loadVideos = async () => {
-      const size = 6
-      if (nextToken !== undefined) {
-        getData(size, nextToken)
-        setCounter(counter + 1)
-      }
+  const previusPage = () => {
+    if (counter > 1) {
+      setCounter(counter - 1) 
+      setPage(sheets[counter - 1])
     }
+  }
 
-    const home = async () => {
-      setNextToken("")
-      getData()
-      setCounter(1)
+  const paginator = (numPages, fetchData) => {
+    let pagin = {}
+    for (let i = 0; i < numPages; i++) {
+      pagin[i+1] = fetchData.slice(6 * i, 6 * (i + 1))
     }
+    return pagin
+  }
     
   return (
     <div>
@@ -79,32 +60,29 @@ const ListFrames = () => {
       <div className="flex justify-around mb-5">
         <button 
           className='bg-white hover:bg-gray-400 hover:text-white text-gray-500 font-bold py-2 px-4 rounded'
-          onClick={home}
+          onClick={previusPage}
         >
-          Regresar al inicio
+          Página anterior
         </button>
+
         <span className="bg-white text-gray-500 font-bold py-2 px-4 rounded">
           Página: { counter }
         </span>
+
         <button 
-          className={nextToken !== undefined 
-            ? 
-            'bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded' 
-            : 
-            'bg-indigo-800 text-white font-bold py-2 px-4 rounded'}
-          onClick={loadVideos}
-          disabled={nextToken === undefined}
+          className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded' 
+          onClick={nextPage}
         >
-          {nextToken !== undefined ? "Cargar más videos" : "No hay más por aquí"}
+          Página siguiente
         </button>
       </div>
       <div className="flex flex-wrap justify-center">
-        { data && data.length
+        { page && page.length
         ?
-          data.map(frame => 
+          page.map(bucket => 
             <Frame 
-            key={ frame.id } 
-            frame={ frame }/>
+            key={ bucket.id } 
+            bucket={ bucket }/>
           )
         :
           <div>

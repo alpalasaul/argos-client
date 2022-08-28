@@ -12,9 +12,9 @@ const customStyles = {
   },
 };
 
-const Frame = ({ frame }) => {
+const Frame = ({ bucket }) => {
 
-  const { id, createdTime, name } = frame
+  const { id, date } = bucket
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
@@ -29,26 +29,21 @@ const Frame = ({ frame }) => {
     return `https://drive.google.com/file/d/${id}/preview`
   }
 
-  const formatDate = (createdTime) => {
-    return createdTime.split('T')[0]
+  const formatDate = (date) => {
+    let res = new Date(date*1000);
+    // return res.toLocaleDateString()
+    return res.toLocaleString()
   }
     
   return (
     <div className='bg-white shadow-md rounded-lg py-5 px-5 text-center mx-2 my-2 text-gray-500'>
       <div className='flex justify-between mx-4'>
-        <p className='uppercase'>{ name.replace('.mp4', '') }</p>
-        <p>{ formatDate(createdTime) }</p>
+        <p className='uppercase'>{ id.replace('.mp4', '') }</p>
+        <p>{ formatDate(date) }</p>
       </div>
 
-      {/* <iframe 
-        className='mx-3 my-3'
-        src={ putSrc(id) }
-        width="384" 
-        height="216" 
-        allow="autoplay"
-      /> */}
-
       <video 
+              className='mx-3 my-3'
               controls=""
               autoplay="" 
               width="384" 
@@ -60,12 +55,6 @@ const Frame = ({ frame }) => {
       
 
       <div className='flex justify-center mx-3 mt-4'>
-        {/* <a 
-            className='bg-amber-500 hover:bg-lime-600 text-white font-bold py-0.5 px-2.5 rounded'
-            href={`https://drive.google.com/uc?export=download&id=${id}`}
-          >
-          Descargar
-        </a> */}
 
         <button 
             className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-0.5 px-2.5 rounded'
@@ -87,17 +76,9 @@ const Frame = ({ frame }) => {
           <div className='text-center'>
 
           <div className='flex justify-around'>
-            <p className='uppercase'>{ name.replace('.mp4', '') }</p>
-            <p>{ formatDate(createdTime) }</p>
+            <p className='uppercase'>{ id.replace('.mp4', '') }</p>
+            <p>{ formatDate(date) }</p>
           </div>
-
-            {/* <iframe 
-              className='mx-3 my-3'
-              src={ putSrc(id) }
-              width="854" 
-              height="480" 
-              allow="autoplay"
-            /> */}
 
       <video video 
               controls="true" 
