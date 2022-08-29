@@ -12,7 +12,14 @@ const ListFrames = () => {
   useEffect(() => {
     getData()
     // return () => getData
-  }, [])
+
+    const interval = setInterval(() => {
+      if (counter === 1) {
+        getData()
+      }
+      }, 10000);
+      return () => clearInterval(interval);
+    }, [])
   
   const getData = async () => {
     const fetchData = await listObjectsBucket()

@@ -35,9 +35,7 @@ const listObjectsBucket = async () => {
         data.push({id, date})
     });
 
-    data.sort((a, b) => {
-        return a.date - b.date;
-    });
+    data.sort((a, b) => b.date - a.date)
 
     return data
 }
