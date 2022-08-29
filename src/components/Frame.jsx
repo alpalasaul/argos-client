@@ -75,21 +75,22 @@ const Frame = ({ bucket }) => {
         >
           <div className='text-center'>
 
-          <div className='flex justify-around'>
-            <p className='uppercase'>{ id.replace('.mp4', '') }</p>
-            <p>{ formatDate(date) }</p>
-          </div>
+            <div className='flex justify-around text-lg'>
+              <p className='uppercase'>{ id.replace('.mp4', '') }</p>
+              <p>{ formatDate(date) }</p>
+            </div>
 
-      <video video 
+            <video 
               controls={true}
               autoPlay={true} 
               width="854" 
               height="480" 
               name="media"
+              className='mt-5 mx-16'
             >
               <source src={putSrc(id)} type="video/mp4"/>
-      </video>
-              
+            </video>
+                
             <button 
               className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded mt-5' 
               onClick={closeModal}>Cerrar
