@@ -2,12 +2,11 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 
-const SERVER_URL = "https://nine-radios-invite-35-185-96-0.loca.lt"
+const SERVER_URL = "http://50.116.23.81"
 
-const Streaming = ({ urlStreaming ,setUrlStreaming }) => {
+const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow }) => {
 
   const [source, setSource] = useState("")
-  const [show, setShow] = useState(false)
 
   const openStream = async () =>{
     let idStream = source;
@@ -45,8 +44,8 @@ const Streaming = ({ urlStreaming ,setUrlStreaming }) => {
     <div>
       <p className="text-3xl mt-5 text-center mb-5 font-bold">
           Capturando {''}
-          <span className="text-indigo-600 font-bold uppercase">Live Stream </span>
-          desde una cámara IP
+          <span className="text-indigo-600 font-bold">Live Stream </span>
+          de una cámara IP
       </p>
 
       <div className="flex justify-center">
@@ -59,19 +58,22 @@ const Streaming = ({ urlStreaming ,setUrlStreaming }) => {
           onChange={(e) => setSource(e.target.value)}
         />
 
-        <button 
-          className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded ml-2'
-          onClick={openStream}
-        >
-          Iniciar
-        </button>
-
-        <button 
-          className='bg-gray-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded ml-2'
-          onClick={closeStream}
-        >
-          Detener
-        </button>
+        { !urlStreaming 
+        ?
+          <button 
+            className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded ml-2'
+            onClick={openStream}
+          >
+            Iniciar
+          </button>
+        :
+          <button 
+            className='bg-gray-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded ml-2'
+            onClick={closeStream}
+          >
+            Detener
+          </button>
+        }
           
       </div>
 
@@ -98,13 +100,13 @@ const Streaming = ({ urlStreaming ,setUrlStreaming }) => {
 
         </div>
       :
-      <div>
-        <p className="text-lg mt-5 text-center mb-5">
-          Ingresa un enlace para comenzar a  {''}
-          <span className="text-indigo-600 font-bold"> capturar {''}</span>
-          el stream y mandarlos al modelo de machine learning.
-        </p>
-      </div>
+        <div>
+          <p className="text-lg mt-5 text-center mb-5">
+            Ingresa un enlace para comenzar a  {''}
+            <span className="text-indigo-600 font-bold"> capturar {''}</span>
+            el stream y mandarlos al modelo de machine learning.
+          </p>
+        </div>
       
       }
       

@@ -9,6 +9,7 @@ import { useState } from 'react'
 function App() {
 
   const [urlStreaming, setUrlStreaming] = useState("")
+  const [show, setShow] = useState(false)
 
   return (
     <div className="container mx-auto mt-5">
@@ -18,7 +19,12 @@ function App() {
           <Route path='/' element={<SharedLayout/>}>
           <Route index element={<Home/>}/>
             <Route path='videos' element={<ListFrame/>}/>
-            <Route path='streaming' element={<Streaming urlStreaming={ urlStreaming } setUrlStreaming= { setUrlStreaming }/>}/>
+            <Route path='streaming' element={<Streaming 
+              urlStreaming={ urlStreaming } 
+              setUrlStreaming={ setUrlStreaming }
+              show={show}
+              setShow={setShow}
+              />}/>
             <Route path='about' element={<About/>}/>
           </Route>
         </Routes>        

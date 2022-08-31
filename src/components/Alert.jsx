@@ -27,10 +27,11 @@ const Alert = ({ color, show }) => {
   );
 };
 
-export default function ClosingAlert() {
-  return (
-    <>
-      return <Alert color="green" />;
-    </>
-  );
-}
+// export default function ClosingAlert() {
+//   return (
+//     <>
+//       return <Alert color="green" />;
+//     </>
+//   );
+// }
+export default Alert

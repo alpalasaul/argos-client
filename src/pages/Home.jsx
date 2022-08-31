@@ -14,7 +14,7 @@ const Home = () => {
           <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
             <p className="uppercase tracking-loose w-full">Visión por computadora</p>
             <h1 className="my-4 text-5xl font-bold leading-tight">
-              ¡Conduce respetando las normas de seguridad!
+              ¡Conduce respetando las leyes de tránsito!
             </h1>
             <p className="leading-normal text-2xl mb-8">
               Monitoreo 24/7 para detectar infractores en las vías de Ecuador. ¡Ponte pilas! 
@@ -31,7 +31,7 @@ const Home = () => {
       </div>
 
 
-      <div className="relative -mt-12 lg:-mt-24">
+    <div className="relative -mt-12 lg:-mt-24">
       <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fillRule="nonzero">
