@@ -8,7 +8,7 @@ import ReactPlayer from 'react-player'
 const SERVER_HTTP = "http://50.116.23.81"
 const SERVER_RSTP = 'http://localhost:9090';
 
-const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow }) => {
+const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow, typeVideo, setTypeVideo }) => {
 
   const [source, setSource] = useState("")
 
@@ -39,6 +39,7 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow }) => {
     let replace = idStream.replace('https://www.youtube.com/watch?v=', '')
     let split = replace.split('&')
     const urlStreaming = `https://www.youtube.com/embed/${split[0]}?controls=0&autoplay=1` 
+    setTypeVideo("https")
     return urlStreaming;
   }
 
@@ -49,7 +50,8 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow }) => {
         "alias": "helmet-cam"
       })
       const uri = response.data.uri
-      NotificationManager.error('Servidor RTSP iniciado');
+      setTypeVideo("rtsp")
+      NotificationManager.success('Servidor RTSP iniciado');
       return SERVER_RSTP + uri
     } catch(err) {
       console.log(err)
@@ -61,7 +63,7 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow }) => {
   const closeStream = async () => {
     try {
       const response = await axios.get(SERVER_HTTP + '/stop')
-      await closeStreamRtspServer()
+      if (typeVideo === "rtsp") await closeStreamRtspServer()
       NotificationManager.warning(response.data.msg);
     } catch(err) {
       NotificationManager.error(err.response.data.msg);
@@ -134,17 +136,19 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow }) => {
       ?
         <div>
           <div className='flex justify-center mt-5'>
-            {
+            { typeVideo === "http"
+            ?
               <iframe 
                 width="854" 
                 height="480" 
-                // src={`https://www.youtube.com/embed/${id}?controls=0&autoplay=1`}
                 src={ urlStreaming }
                 title="YouTube video player" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen
               />
+            :
+              <ReactPlayer url={ urlStreaming } playing={ true }/>
             }
           </div>
           <div className="flex justify-center mt-5">

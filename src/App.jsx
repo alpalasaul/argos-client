@@ -10,6 +10,7 @@ function App() {
 
   const [urlStreaming, setUrlStreaming] = useState("")
   const [show, setShow] = useState(false)
+  const [typeVideo, setTypeVideo] = useState("")
 
   return (
     <div className="container mx-auto mt-5">
