@@ -1,43 +1,94 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import ReactPlayer from 'react-player'
 
-const SERVER_URL = "http://50.116.23.81"
+const SERVER_HTTP = "http://50.116.23.81"
+const SERVER_RSTP = 'http://localhost:9090';
 
 const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow }) => {
 
   const [source, setSource] = useState("")
 
   const openStream = async () =>{
+    if (source === "") {
+      NotificationManager.warning('Ingrese un URL o RTSP válido');
+      return
+    }
+
+    let urlStreaming = source.includes('https://www.youtube.com') ? handleHttp() : await handleRstp(source)
+
+    try {
+      const response = await axios.get(SERVER_HTTP + '/stream', {
+        params: {
+          stream_url: source
+        }
+      })
+      setShow(true)
+      setUrlStreaming(urlStreaming) // para el iframe así como para react player
+      NotificationManager.success(response.data.msg);
+    } catch (err) {
+      NotificationManager.error(err.response.data.msg);
+    }
+  }
+
+  const handleHttp = () => {
     let idStream = source;
     let replace = idStream.replace('https://www.youtube.com/watch?v=', '')
     let split = replace.split('&')
     const urlStreaming = `https://www.youtube.com/embed/${split[0]}?controls=0&autoplay=1` 
-    try {
-      const response = await axios.get(SERVER_URL + '/stream', {
-        params: {
-          stream_url: idStream
-        }
+    return urlStreaming;
+  }
+
+  const handleRstp = async(urlRtsp) => {
+    try{
+      const response = await axios.post(SERVER_RSTP + '/start', {
+        "uri": urlRtsp, // dinamico 
+        "alias": "helmet-cam"
       })
-      console.log(response.data)
-      setShow(true)
-      setUrlStreaming(urlStreaming)
-    } catch (err) {
-      console.log(err.response)
+      const uri = response.data.uri
+      NotificationManager.error('Servidor RTSP iniciado');
+      return SERVER_RSTP + uri
+    } catch(err) {
+      console.log(err)
+      NotificationManager.error(err.response.data.msg);
     }
+    return ''
   }
 
   const closeStream = async () => {
     try {
-      const response = await axios.get(SERVER_URL + '/stop')
-      console.log(response.data) // crear un componente de mensaje
+      const response = await axios.get(SERVER_HTTP + '/stop')
+      await closeStreamRtspServer()
+      NotificationManager.warning(response.data.msg);
     } catch(err) {
-      console.log(err.response)
+      NotificationManager.error(err.response.data.msg);
     } finally {
       setUrlStreaming("")
       setSource("")
       setShow(false)
     }
+  }
+
+  const closeStreamRtspServer = async() => {
+    try{
+      const response = await axios.post(SERVER_RSTP + '/stop', {
+        "alias": "helmet-cam",
+        "remove": true, 
+        "wait": false
+      })
+      if (response.status === 200) {
+        NotificationManager.success('Servidor RTSP cerrado');
+      } else {
+        NotificationManager.error('Error al cerrar servidor RTSP');
+      }
+    } catch(err) {
+      console.log(err)
+      NotificationManager.error(err.response.data.msg);
+    }
+    return ''
   }
   
   return (
@@ -47,6 +98,8 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow }) => {
           <span className="text-indigo-600 font-bold">Live Stream </span>
           de una cámara IP
       </p>
+
+      <NotificationContainer/>
 
       <div className="flex justify-center">
         <input 
@@ -81,16 +134,18 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow }) => {
       ?
         <div>
           <div className='flex justify-center mt-5'>
-            <iframe 
-              width="854" 
-              height="480" 
-              // src={`https://www.youtube.com/embed/${id}?controls=0&autoplay=1`}
-              src={ urlStreaming }
-              title="YouTube video player" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen
-            />
+            {
+              <iframe 
+                width="854" 
+                height="480" 
+                // src={`https://www.youtube.com/embed/${id}?controls=0&autoplay=1`}
+                src={ urlStreaming }
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              />
+            }
           </div>
           <div className="flex justify-center mt-5">
             <div className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded ml-2">
