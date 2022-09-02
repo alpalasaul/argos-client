@@ -4,15 +4,19 @@ import axios from "axios";
 import "./Login.css";
 import argos from './../../assets/home-args.png'
 
+const SERVER = "http://localhost:8080"
+
 async function loginUser(credentials) {
   const { username, password } = credentials;
 
-  return axios
-    .post("http://localhost:8080/auth/login", {
-      username,
-      password,
-    })
-    .then((res) => res.data);
+  return {token: "as9d8f 89asdfhaosdf3o245n23lj4n5235k24ñlk5n"}
+
+  // return axios
+  //   .post(SERVER + "/auth/login", {
+  //     username,
+  //     password,
+  //   })
+  //   .then((res) => res.data);
 }
 
 const Login = ({ setToken }) => {
