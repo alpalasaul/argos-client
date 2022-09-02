@@ -25,6 +25,8 @@ function App() {
               setUrlStreaming={ setUrlStreaming }
               show={show}
               setShow={setShow}
+              typeVideo={typeVideo}
+              setTypeVideo={setTypeVideo}
               />}/>
             <Route path='about' element={<About/>}/>
           </Route>

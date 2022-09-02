@@ -45,19 +45,20 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow, typeVideo, se
 
   const handleRstp = async(urlRtsp) => {
     try{
+      NotificationManager.info('Solicitando video HLS al servidor');
       const response = await axios.post(SERVER_RSTP + '/start', {
         "uri": urlRtsp, // dinamico 
         "alias": "helmet-cam"
       })
       const uri = response.data.uri
       setTypeVideo("rtsp")
-      NotificationManager.success('Servidor RTSP iniciado');
+      NotificationManager.success('Servidor HLS iniciado');
       return SERVER_RSTP + uri
     } catch(err) {
       console.log(err)
-      NotificationManager.error(err.response.data.msg);
+      NotificationManager.error('Error al inicar el servidor HLS');
     }
-    return ''
+    throw new Error('No se pudo inicial el servidor HLS')
   }
 
   const closeStream = async () => {
@@ -82,9 +83,9 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow, typeVideo, se
         "wait": false
       })
       if (response.status === 200) {
-        NotificationManager.success('Servidor RTSP cerrado');
+        NotificationManager.success('Servidor HLS cerrado');
       } else {
-        NotificationManager.error('Error al cerrar servidor RTSP');
+        NotificationManager.error('Error al cerrar servidor HLS');
       }
     } catch(err) {
       console.log(err)
