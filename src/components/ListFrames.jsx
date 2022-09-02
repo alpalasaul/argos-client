@@ -58,7 +58,7 @@ const ListFrames = () => {
       <div>
         <p className="text-3xl mt-5 text-center mb-5 font-bold">
           Todos los objetos {''}
-          <span className="text-indigo-600 font-bold">detectados por el modelo {''}</span>
+          <span className="text-green-600 font-bold">detectados por el modelo {''}</span>
           aparecerán aquí 🕵🏻
         </p>
       </div>
@@ -75,7 +75,7 @@ const ListFrames = () => {
         </span>
 
         <button 
-          className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded' 
+          className='bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded' 
           onClick={nextPage}
         >
           Página siguiente
@@ -92,8 +92,8 @@ const ListFrames = () => {
         :
           <div>
             <p className="text-lg mt-5 text-center mb-5">
-              No hay videos para mostrar, carga un {''}
-              <span className="text-indigo-600 font-bold"> Live Stream {''}</span>
+              No hay videos para mostrar, carga una {''}
+              <span className="text-green-600 font-bold"> fuente de video {''}</span>
               y aparecerán aquí.
             </p>
           </div>

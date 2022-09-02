@@ -97,9 +97,9 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow, typeVideo, se
   return (
     <div>
       <p className="text-3xl mt-5 text-center mb-5 font-bold">
-          Capturando {''}
-          <span className="text-indigo-600 font-bold">Live Stream </span>
-          de una cámara IP
+          Captura {''}
+          <span className="text-green-600 font-bold">en vivo </span>
+          de una fuete de video
       </p>
 
       <NotificationContainer/>
@@ -108,7 +108,7 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow, typeVideo, se
         <input 
           id="mascota"
           type="text" 
-          placeholder="Enlace al stream de video"
+          placeholder="URL de tipo https:// o rtsp://"
           className="border-2 w-1/3 p-2 placeholder-gray-400 rounded-md text-gray-500"
           value={source}
           onChange={(e) => setSource(e.target.value)}
@@ -117,14 +117,14 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow, typeVideo, se
         { !urlStreaming 
         ?
           <button 
-            className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded ml-2'
+            className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2'
             onClick={openStream}
           >
             Iniciar
           </button>
         :
           <button 
-            className='bg-gray-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded ml-2'
+            className='bg-gray-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2'
             onClick={closeStream}
           >
             Detener
@@ -153,7 +153,7 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow, typeVideo, se
             }
           </div>
           <div className="flex justify-center mt-5">
-            <div className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded ml-2">
+            <div className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2">
               <Link to="/videos">Ver detecciones de casco</Link>
             </div>
           </div>
@@ -163,7 +163,7 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow, typeVideo, se
         <div>
           <p className="text-lg mt-5 text-center mb-5">
             Ingresa un enlace para comenzar a  {''}
-            <span className="text-indigo-600 font-bold"> capturar {''}</span>
+            <span className="text-green-600 font-bold"> capturar {''}</span>
             el stream y mandarlos al modelo de machine learning.
           </p>
         </div>

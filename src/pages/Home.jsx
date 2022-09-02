@@ -4,6 +4,9 @@ import delivery from './../assets/delivery.png'
 import home from './../assets/home.png'
 import cam from './../assets/cam.png'
 import ia from './../assets/ia.png'
+import argos from './../assets/nav-argos.png'
+import Card from './Card'
+import data from "./planes.js"
 
 const Home = () => {
   return (
@@ -54,13 +57,13 @@ const Home = () => {
 
     <section className="bg-white border-b py-8">
       <div className="container max-w-5xl mx-auto m-8">
-        <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+        {/* <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
           Proyecto final en Minería de Datos
-        </h2>
+        </h2> */}
         <div className="w-full mb-4">
           <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
-        <div className="flex flex-wrap">
+        {/* <div className="flex flex-wrap">
           <div className="w-5/6 sm:w-1/2 p-6">
             <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
               ¿Qué es minería de datos?
@@ -74,11 +77,28 @@ const Home = () => {
             <img src={ delivery } alt="Delivery" />
           
           </div>
+        </div> */}
+
+        <div className="flex flex-wrap">
+          <div className="w-5/6 sm:w-1/2 p-6">
+            <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
+              Usamos Inteligencia Artificial
+            </h3>
+            <p className="text-gray-600 mb-8">
+              De una fuente de video como un Live Stream de obtiene frame a frame que son enviados a un modelo de Inteligencia Artificial que procesa las imágenes y devuelve fragmentos de video de 6 segundos que contiene si una persona lleva casco o no.
+            </p>
+          </div>
+          <div className="w-full sm:w-1/2 p-6">
+           
+            <img src={ ia } alt="Delivery" />
+          
+          </div>
         </div>
+
         <div className="flex flex-wrap flex-col-reverse sm:flex-row">
           <div className="w-full sm:w-1/2 p-6 mt-6">
             
-            <img src={ cam } alt="" />
+            <img src={ delivery } alt="" />
 
           </div>
           <div className="w-full sm:w-1/2 p-6 mt-6">
@@ -96,22 +116,24 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap">
-          <div className="w-5/6 sm:w-1/2 p-6">
-            <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-              Usamos Inteligencia Artificial
-            </h3>
-            <p className="text-gray-600 mb-8">
-              De una fuente de video como un Live Stream de obtiene frame a frame que son enviados a un modelo de Inteligencia Artificial que procesa las imágenes y devuelve fragmentos de video de 6 segundos que contiene si una persona lleva casco o no.
-            </p>
-          </div>
-          <div className="w-full sm:w-1/2 p-6">
-           
-            <img src={ ia } alt="Delivery" />
-          
-          </div>
-        </div>
       </div>
+
+      <div>
+        <p className="text-3xl mt-5 text-center mb-5 font-bold">
+          ¡Contrata un plan {""}
+          <span className="text-green-600 font-bold">completo </span>
+          ahora!
+        </p>
+      </div>
+
+      <div className="flex flex-wrap justify-center">
+        {
+            data.map(card => 
+                <Card key={card.id} card={card}/>
+            )
+        }
+      </div>
+
     </section>
 
 
@@ -121,11 +143,7 @@ const Home = () => {
         <div className="container mx-auto px-8">
           <div className="w-full flex flex-col md:flex-row py-6">
             <div className="flex-1 mb-6 text-black">
-              <a className="text-indigo-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-                {/* <!--Icon from: http://www.potlabicons.com/ --> */}
-                <span className="text-3xl mr-2">😎</span>
-                HELMET DETECTION
-              </a>
+              <img src={ argos } alt="Logo Argos" width="200px" hidden="80px" />
             </div>
             <div className="flex-1">
               <p className="uppercase text-gray-500 md:mb-6">Links</p>

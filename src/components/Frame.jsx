@@ -57,7 +57,7 @@ const Frame = ({ bucket }) => {
       <div className='flex justify-center mx-3 mt-4'>
 
         <button 
-            className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-0.5 px-2.5 rounded'
+            className='bg-green-600 hover:bg-green-700 text-white font-bold py-0.5 px-2.5 rounded'
             onClick={openModal}
           >
           Ver en pantalla completa
@@ -92,7 +92,7 @@ const Frame = ({ bucket }) => {
             </video>
                 
             <button 
-              className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded mt-5' 
+              className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-5' 
               onClick={closeModal}>Cerrar
             </button>
           
