@@ -5,8 +5,8 @@ import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import ReactPlayer from 'react-player'
 
-// const SERVER_HTTP = "http://50.116.23.81"
-const SERVER_HTTP = "https://cyan-ads-brush-35-204-97-72.loca.lt"
+const SERVER_HTTP = "http://50.116.23.81"
+// const SERVER_HTTP = "https://cyan-ads-brush-35-204-97-72.loca.lt"
 const SERVER_RSTP = 'http://173.255.219.215';
 
 const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow, typeVideo, setTypeVideo }) => {
