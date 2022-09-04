@@ -14,23 +14,23 @@ const Navbar = () => {
         <a href="/" className="flex items-center">
           <img src={ argos } alt="Logo Argos" width="200px" hidden="80px" />
         </a>
-        <div className="hidden w-full md:block md:w-auto uppercase" id="navbar-default">
-          <ul className="flex flex-col p-1 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+        <div className="hidden w-full md:block md:w-auto justify-end" id="navbar-default">
+          <ul className="flex flex-col p-1 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white items-center">
             
             <li>
               <Link to="/">Inicio</Link>
             </li>
             <li>
-              <Link to="/streaming">{'  '}Video en vivo</Link>
+              <Link to="/streaming">{'  '}En vivo</Link>
             </li>
             <li>
-              <Link to="/videos">Mis videos</Link>
+              <Link to="/videos">Almacén</Link>
             </li>
             {/* <li>
               <Link to="/about">Acerca de</Link>
             </li> */}
             <li>
-              <button className="uppercase" onClick={closeSession}>Cerrar sesión</button>
+              <button className="bg-green-600 hover:bg-green-700 text-white font-bold px-2 py-1 rounded ml-2" onClick={closeSession}>Cerrar sesión</button>
               {/* <Link to="/">Cerrar sesión</Link> */}
             </li>
           </ul>

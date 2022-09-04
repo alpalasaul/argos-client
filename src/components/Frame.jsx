@@ -92,7 +92,7 @@ const Frame = ({ bucket }) => {
             </video>
                 
             <button 
-              className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-5' 
+              className='bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-5' 
               onClick={closeModal}>Cerrar
             </button>
           

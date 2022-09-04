@@ -24,7 +24,7 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow, typeVideo, se
     try {
       const response = await axios.get(SERVER_HTTP + '/stream', {
         params: {
-          stream_url: source
+          stream_url: source.includes('rtsp://') ? source.replace('stream1', 'stream2') : source
         }
       })
       setShow(true)
@@ -98,9 +98,9 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow, typeVideo, se
   return (
     <div>
       <p className="text-3xl mt-5 text-center mb-5 font-bold">
-          Captura {''}
+          Transmisión {''}
           <span className="text-green-600 font-bold">en vivo </span>
-          de una fuete de video
+          de una fuente de video
       </p>
 
       <NotificationContainer/>
@@ -118,7 +118,7 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow, typeVideo, se
         { !urlStreaming 
         ?
           <button 
-            className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2'
+            className='bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2'
             onClick={openStream}
           >
             Iniciar
@@ -154,7 +154,7 @@ const Streaming = ({ urlStreaming ,setUrlStreaming, show, setShow, typeVideo, se
             }
           </div>
           <div className="flex justify-center mt-5">
-            <div className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2">
+            <div className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded ml-2">
               <Link to="/videos">Ver detecciones de casco</Link>
             </div>
           </div>

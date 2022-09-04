@@ -75,7 +75,7 @@ const Login = ({ setToken }) => {
                 ¡Bienvenido de nuevo!
               </h2>
               <p className="mt-2 text-sm text-gray-500">
-                Por favor inicia sesión con tu cuenta
+                Inicia sesión con tu cuenta
               </p>
             </div>
             <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -83,12 +83,12 @@ const Login = ({ setToken }) => {
               <div className="relative">
                 
                 <label className="ml-3 text-sm font-bold text-gray-700 tracking-wide">
-                  Usuario / Correo
+                  Usuario ó Correo
                 </label>
                 <input
                   className=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
                   type="text"
-                  placeholder="mail@gmail.com"
+                  placeholder="Ingresa tu correo o nombre de usuario"
                   onChange={e => setUserName(e.target.value)}
                 />
               </div>
@@ -99,7 +99,7 @@ const Login = ({ setToken }) => {
                 <input
                   className="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
                   type="password"
-                  placeholder="Enter your password"
+                  placeholder="Ingresa tu contraseña"
                   onChange={e => setPassword(e.target.value)}
                 />
               </div>
