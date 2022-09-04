@@ -10,7 +10,6 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { faker } from "@faker-js/faker";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -25,10 +24,11 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = "https://fair-hoops-remain-34-143-176-62.loca.lt";
+const SERVER = "https://cool-squids-act-34-143-176-62.loca.lt";
 
-const Estadistica = () => {
+const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
   const [fecha, setFecha] = useState(new Date());
+  const [calendar, setCalendar] = useState(fecha.toISOString().split("T")[0]);
   const [infractores, setInfractores] = useState([]);
   const [noIfractores, setNoInfractores] = useState([]);
 
@@ -55,8 +55,23 @@ const Estadistica = () => {
       })
       .catch((err) => {
         console.log("Error al cargar datos iniciales");
+        console.log(err);
       });
   }, []);
+
+  useEffect(() => {
+    const valCalendar = fecha.toISOString().split("T")[0];
+    fetchData(new Date(valCalendar))
+      .then((res) => {
+        if (res !== null) {
+          pushData(res.data);
+        }
+      })
+      .catch((err) => {
+        console.log("Error al cargar datos del calendario");
+        console.log(err);
+      });
+  }, [calendar]);
 
   const pushData = (data) => {
     const dic = data.data;
@@ -76,10 +91,13 @@ const Estadistica = () => {
   };
 
   const fetchData = async (param = fecha) => {
+    const id = getId(urlBaseRtsp, urlStreaming);
+
     try {
       const response = await axios.get(SERVER + "/fetch", {
         params: {
           date: param.toISOString().split("T")[0].replace("2022", "22"),
+          camara: id,
         },
       });
       return response;
@@ -89,12 +107,25 @@ const Estadistica = () => {
     return null;
   };
 
+  const getId = (urlRtsp, urlStreaming) => {
+    let id = "";
+    if (typeVideo === "rtsp") {
+      id = urlRtsp.split("@")[1].split("/")[0];
+    } else {
+      let replace = urlStreaming.replace("https://www.youtube.com/embed/", "");
+      let split = replace.split("?");
+      id = split[0];
+    }
+    return id;
+  };
+
   const nextDate = () => {
     const paramFecha = addDaysToDate(fecha, 1);
     fetchData(paramFecha).then((res) => {
       if (res !== null) {
         pushData(res.data);
         setFecha(addDaysToDate(fecha, 1));
+        setCalendar(addDaysToDate(fecha, 1).toISOString().split("T")[0]); // verificar si vale
       }
     });
   };
@@ -106,6 +137,7 @@ const Estadistica = () => {
       if (res !== null) {
         pushData(res.data);
         setFecha(addDaysToDate(fecha, -1));
+        setCalendar(addDaysToDate(fecha, -1).toISOString().split("T")[0]);
       }
     });
   };
@@ -148,7 +180,7 @@ const Estadistica = () => {
     datasets: [
       {
         fill: true,
-        label: "Personas con casco",
+        label: "Objetos detectados con casco",
         // data: labels.map(() => faker.datatype.number({ min: 0, max: 10 })),
         data: infractores,
         borderColor: "rgb(21 128 61)",
@@ -157,7 +189,7 @@ const Estadistica = () => {
       },
       {
         fill: true,
-        label: "Personas sin casco",
+        label: "Objetos detectados sin casco",
         // data: labels.map(() => faker.datatype.number({ min: 0, max: 10 })),
         data: noIfractores,
         borderColor: "rgb(55, 65, 81)",
@@ -181,6 +213,14 @@ const Estadistica = () => {
         >
           Fecha anterior
         </button>
+
+        <input
+          id="fecha"
+          type="date"
+          className="border-2 px-2 placeholder-gray-400 rounded-md"
+          value={calendar}
+          onChange={(e) => setCalendar(e.target.value)}
+        />
 
         <button
           className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
