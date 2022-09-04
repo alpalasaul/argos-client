@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import "./Login.css";
-import argos from './../../assets/home-args.png'
+import argos from "./../../assets/home-args.png";
 
-const SERVER = "http://localhost:8080"
+const SERVER = "http://localhost:8080";
 
 async function loginUser(credentials) {
   const { username, password } = credentials;
 
-  return {token: "as9d8f 89asdfhaosdf3o245n23lj4n5235k24ñlk5n"}
+  return { token: "as9d8f 89asdfhaosdf3o245n23lj4n5235k24ñlk5n" };
 
   // return axios
   //   .post(SERVER + "/auth/login", {
@@ -44,15 +44,19 @@ const Login = ({ setToken }) => {
           <div className="absolute bg-gradient-to-b from-indigo-600 to-blue-500 opacity-75 inset-0 z-0"></div>
           <div className="w-full  max-w-md z-10">
             <div className="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">
-                <img src={ argos } alt="Logo Argos" width="300px" hidden="80px" />
+              <img src={argos} alt="Logo Argos" width="400px" hidden="80px" />
             </div>
             <div className="sm:text-sm xl:text-md text-gray-200 font-normal">
               {" "}
-              Somos una plataforma en línea disponible para todo el mundo. Usamos inteligencia artifical para el procesamiento y detección de objetos.
+              Somos una plataforma en línea disponible para todo el mundo.
+              Usamos inteligencia artifical para el procesamiento y detección de
+              objetos.
             </div>
             <div className="sm:text-sm xl:text-md text-gray-200 font-normal">
               {" "}
-              Procesamos los video casi en tiempo real con 2 fuentes disponibles: YouTube y RTSP. Implementamos una capa de seguridad para la transmisión segura de video a través de RTSP.
+              Procesamos los video casi en tiempo real con 2 fuentes
+              disponibles: YouTube y RTSP. Implementamos una capa de seguridad
+              para la transmisión segura de video a través de RTSP.
             </div>
           </div>
           <ul className="circles">
@@ -81,7 +85,6 @@ const Login = ({ setToken }) => {
             <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
               <input type="hidden" name="remember" value="true" />
               <div className="relative">
-                
                 <label className="ml-3 text-sm font-bold text-gray-700 tracking-wide">
                   Usuario
                 </label>
@@ -89,7 +92,7 @@ const Login = ({ setToken }) => {
                   className=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
                   type="text"
                   placeholder="Ingresa tu correo o nombre de usuario"
-                  onChange={e => setUserName(e.target.value)}
+                  onChange={(e) => setUserName(e.target.value)}
                 />
               </div>
               <div className="mt-8 content-center">
@@ -100,7 +103,7 @@ const Login = ({ setToken }) => {
                   className="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
                   type="password"
                   placeholder="Ingresa tu contraseña"
-                  onChange={e => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="flex items-center justify-between">

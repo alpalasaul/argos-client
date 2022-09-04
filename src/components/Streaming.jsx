@@ -9,7 +9,7 @@ import {
 import ReactPlayer from "react-player";
 
 // const SERVER_HTTP = "http://50.116.23.81";
-const SERVER_HTTP = "https://cool-squids-act-34-143-176-62.loca.lt";
+const SERVER_HTTP = "https://tidy-jeans-rhyme-34-143-176-62.loca.lt";
 const SERVER_RSTP = "http://173.255.219.215";
 
 const Streaming = ({
@@ -38,12 +38,9 @@ const Streaming = ({
       : handleSaveIdRtsp(source);
 
     try {
-      console.log(id, "******* current id");
       const response = await axios.get(SERVER_HTTP + "/stream", {
         params: {
-          stream_url: source.includes("rtsp://")
-            ? source.replace("stream1", "stream2")
-            : source,
+          stream_url: source,
           stream_save: id,
         },
       });
@@ -79,9 +76,10 @@ const Streaming = ({
     try {
       NotificationManager.info("Solicitando video HLS al servidor");
       const response = await axios.post(SERVER_RSTP + "/start", {
-        uri: urlRtsp, // dinamico
+        uri: urlRtsp.replace("stream1", "stream2"), // dinamico
         alias: "helmet-cam",
       });
+
       const uri = response.data.uri;
       setTypeVideo("rtsp");
       NotificationManager.success("Servidor HLS iniciado");
