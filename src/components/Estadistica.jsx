@@ -12,6 +12,10 @@ import {
 import { Line } from "react-chartjs-2";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 
 ChartJS.register(
   CategoryScale,
@@ -57,6 +61,11 @@ const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
         console.log("Error al cargar datos iniciales");
         console.log(err);
       });
+    if ([urlBaseRtsp, urlStreaming].includes("")) {
+      NotificationManager.info(
+        "Ingrese una fuente de video para ver sus estadísticas"
+      );
+    }
   }, []);
 
   useEffect(() => {
@@ -206,6 +215,7 @@ const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
         <span className="text-green-600 font-bold"> infractores </span>
         por día y hora
       </p>
+      <NotificationContainer />
       <div className="flex justify-around mb-5">
         <button
           className="bg-white hover:bg-gray-400 hover:text-white text-gray-500 font-bold py-2 px-4 rounded"
