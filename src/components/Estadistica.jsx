@@ -11,7 +11,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 ChartJS.register(
@@ -25,12 +25,12 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = ""
+const SERVER = "";
 
 const Estadistica = () => {
   const [fecha, setFecha] = useState(new Date());
-  const [infractores, setInfractores] = useState([])
-  const [noIfractores, setNoInfractores] = useState([])
+  const [infractores, setInfractores] = useState([]);
+  const [noIfractores, setNoInfractores] = useState([]);
 
   let options = {
     responsive: true,
@@ -41,33 +41,69 @@ const Estadistica = () => {
       maintainAspectRatio: false,
       title: {
         display: true,
-        text: fecha.toISOString().split('T')[0],
+        text: fecha.toISOString().split("T")[0],
       },
     },
   };
 
-  const fetchData = async() => {
-    const response = await axios.get(SERVER + '/fetch', {
-        params: {
-            date: fecha.toISOString().split('T')[0]
+  useEffect(() => {
+    fetchData()
+      .then((res) => {
+        if (res !== null) {
         }
-    })
-    console.log(response)
-  }
+        setInfractores(
+          labels.map(() => faker.datatype.number({ min: 0, max: 10 }))
+        );
+        setNoInfractores(
+          labels.map(() => faker.datatype.number({ min: 0, max: 10 }))
+        );
+      })
+      .catch((err) => {
+        console.log("Error al cargar datos iniciales");
+      });
+  }, []);
+
+  const pushData = () => {
+    // logica para almacenar la información en arreglos y hacer el set de infra y no infra
+  };
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(SERVER + "/fetch", {
+        params: {
+          date: fecha.toISOString().split("T")[0],
+        },
+      });
+      return response;
+    } catch (err) {
+      console.log(err);
+    }
+    return null;
+  };
 
   const nextDate = () => {
-    setFecha(addDaysToDate(fecha, 1));
+    fetchData().then((data) => {
+      if (data !== null) {
+        setFecha(addDaysToDate(fecha, 1));
+      }
+      setInfractores([1, 2, 10, 34, 2, 6, 3, 2, 9, 0, 0, 4, 1]);
+      setNoInfractores([6, 5, 8, 0, 0, 0, 4, 5, 6, 7, 14, 6, 7]);
+    });
   };
 
   const previusDate = () => {
-    setFecha(addDaysToDate(fecha, -1));
+    fetchData().then((data) => {
+      if (data !== null) {
+        setFecha(addDaysToDate(fecha, -1));
+      }
+    });
   };
 
   const addDaysToDate = (date, days) => {
     const res = new Date(date);
     res.setDate(res.getDate() + days);
     return res;
-  }
+  };
 
   const labels = [
     "00:00",
@@ -102,7 +138,8 @@ const Estadistica = () => {
       {
         fill: true,
         label: "Personas con casco",
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 10 })),
+        // data: labels.map(() => faker.datatype.number({ min: 0, max: 10 })),
+        data: infractores,
         borderColor: "rgb(21 128 61)",
         backgroundColor: "rgba(22, 163, 74, 0.2)",
         tension: 0.3,
@@ -110,7 +147,8 @@ const Estadistica = () => {
       {
         fill: true,
         label: "Personas sin casco",
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 10 })),
+        // data: labels.map(() => faker.datatype.number({ min: 0, max: 10 })),
+        data: noIfractores,
         borderColor: "rgb(55, 65, 81)",
         backgroundColor: "rgba(107, 114, 128, 0.2)",
         tension: 0.3,
