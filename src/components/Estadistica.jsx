@@ -12,6 +12,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
 import { useState } from "react";
+import axios from "axios";
 
 ChartJS.register(
   CategoryScale,
@@ -24,10 +25,14 @@ ChartJS.register(
   Legend
 );
 
-const Estadistica = () => {
-  const [fecha, setFecha] = useState(new Date().toLocaleDateString());
+const SERVER = ""
 
-  const options = {
+const Estadistica = () => {
+  const [fecha, setFecha] = useState(new Date());
+  const [infractores, setInfractores] = useState([])
+  const [noIfractores, setNoInfractores] = useState([])
+
+  let options = {
     responsive: true,
     plugins: {
       legend: {
@@ -36,17 +41,32 @@ const Estadistica = () => {
       maintainAspectRatio: false,
       title: {
         display: true,
-        text: "02/09/2022",
+        text: fecha.toISOString().split('T')[0],
       },
     },
   };
 
-  const nextDate = () => {
-
+  const fetchData = async() => {
+    const response = await axios.get(SERVER + '/fetch', {
+        params: {
+            date: fecha.toISOString().split('T')[0]
+        }
+    })
+    console.log(response)
   }
 
+  const nextDate = () => {
+    setFecha(addDaysToDate(fecha, 1));
+  };
+
   const previusDate = () => {
-    
+    setFecha(addDaysToDate(fecha, -1));
+  };
+
+  const addDaysToDate = (date, days) => {
+    const res = new Date(date);
+    res.setDate(res.getDate() + days);
+    return res;
   }
 
   const labels = [
@@ -81,10 +101,18 @@ const Estadistica = () => {
     datasets: [
       {
         fill: true,
-        label: "Número de infractores por hora",
+        label: "Personas con casco",
         data: labels.map(() => faker.datatype.number({ min: 0, max: 10 })),
         borderColor: "rgb(21 128 61)",
         backgroundColor: "rgba(22, 163, 74, 0.2)",
+        tension: 0.3,
+      },
+      {
+        fill: true,
+        label: "Personas sin casco",
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 10 })),
+        borderColor: "rgb(55, 65, 81)",
+        backgroundColor: "rgba(107, 114, 128, 0.2)",
         tension: 0.3,
       },
     ],
@@ -100,14 +128,14 @@ const Estadistica = () => {
       <div className="flex justify-around mb-5">
         <button
           className="bg-white hover:bg-gray-400 hover:text-white text-gray-500 font-bold py-2 px-4 rounded"
-          //   onClick={previusPage}
+          onClick={previusDate}
         >
           Fecha anterior
         </button>
 
         <button
           className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-          //   onClick={nextPage}
+          onClick={nextDate}
         >
           Fecha siguiente
         </button>
