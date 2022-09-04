@@ -25,7 +25,7 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = "";
+const SERVER = "https://fair-hoops-remain-34-143-176-62.loca.lt";
 
 const Estadistica = () => {
   const [fecha, setFecha] = useState(new Date());
@@ -50,28 +50,36 @@ const Estadistica = () => {
     fetchData()
       .then((res) => {
         if (res !== null) {
+          pushData(res.data);
         }
-        setInfractores(
-          labels.map(() => faker.datatype.number({ min: 0, max: 10 }))
-        );
-        setNoInfractores(
-          labels.map(() => faker.datatype.number({ min: 0, max: 10 }))
-        );
       })
       .catch((err) => {
         console.log("Error al cargar datos iniciales");
       });
   }, []);
 
-  const pushData = () => {
-    // logica para almacenar la información en arreglos y hacer el set de infra y no infra
+  const pushData = (data) => {
+    const dic = data.data;
+    let listInfractores = [];
+    let listNoInfractores = [];
+    for (let i = 0; i < 24; i++) {
+      if (dic[i] !== undefined) {
+        listInfractores.push(dic[i].num_infracciones);
+        listNoInfractores.push(dic[i].num_no_infracciones);
+      } else {
+        listInfractores.push(0);
+        listNoInfractores.push(0);
+      }
+    }
+    setInfractores(listInfractores);
+    setNoInfractores(listNoInfractores);
   };
 
-  const fetchData = async () => {
+  const fetchData = async (param = fecha) => {
     try {
       const response = await axios.get(SERVER + "/fetch", {
         params: {
-          date: fecha.toISOString().split("T")[0],
+          date: param.toISOString().split("T")[0].replace("2022", "22"),
         },
       });
       return response;
@@ -82,18 +90,21 @@ const Estadistica = () => {
   };
 
   const nextDate = () => {
-    fetchData().then((data) => {
-      if (data !== null) {
+    const paramFecha = addDaysToDate(fecha, 1);
+    fetchData(paramFecha).then((res) => {
+      if (res !== null) {
+        pushData(res.data);
         setFecha(addDaysToDate(fecha, 1));
       }
-      setInfractores([1, 2, 10, 34, 2, 6, 3, 2, 9, 0, 0, 4, 1]);
-      setNoInfractores([6, 5, 8, 0, 0, 0, 4, 5, 6, 7, 14, 6, 7]);
     });
   };
 
   const previusDate = () => {
-    fetchData().then((data) => {
-      if (data !== null) {
+    const paramFecha = addDaysToDate(fecha, -1);
+    console.log(paramFecha);
+    fetchData(paramFecha).then((res) => {
+      if (res !== null) {
+        pushData(res.data);
         setFecha(addDaysToDate(fecha, -1));
       }
     });
