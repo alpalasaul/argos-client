@@ -9,6 +9,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Preferences from './components/Preferences/Preferences';
 import Login from './components/Login/Login';
 import useToken from './useToken';
+import Estadistica from './components/Estadistica'
 
 // function App() {
 
@@ -78,6 +79,7 @@ function App () {
               typeVideo={typeVideo}
               setTypeVideo={setTypeVideo}
               />}/>
+            <Route path='estadisticas' element={<Estadistica/>}/>
             <Route path='about' element={<About/>}/>
           </Route>
         </Routes>        
