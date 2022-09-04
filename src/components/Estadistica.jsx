@@ -12,10 +12,6 @@ import {
 import { Line } from "react-chartjs-2";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
 
 ChartJS.register(
   CategoryScale,
@@ -28,13 +24,15 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = "https://tidy-jeans-rhyme-34-143-176-62.loca.lt";
+const SERVER = "https://eighty-rooms-care-34-143-176-62.loca.lt";
 
 const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
   const [fecha, setFecha] = useState(new Date());
   const [calendar, setCalendar] = useState(fecha.toISOString().split("T")[0]);
   const [infractores, setInfractores] = useState([]);
   const [noIfractores, setNoInfractores] = useState([]);
+  const [check, setCheck] = useState("");
+  const [sources, setSources] = useState([]);
 
   let options = {
     responsive: true,
@@ -51,6 +49,7 @@ const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
   };
 
   useEffect(() => {
+    getAllCameras();
     fetchData()
       .then((res) => {
         if (res !== null) {
@@ -61,26 +60,21 @@ const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
         console.log("Error al cargar datos iniciales");
         console.log(err);
       });
-    if ([urlBaseRtsp, urlStreaming].includes("")) {
-      NotificationManager.info(
-        "Ingrese una fuente de video para ver sus estadísticas"
-      );
-    }
   }, []);
 
   useEffect(() => {
-    const valCalendar = fecha.toISOString().split("T")[0];
-    fetchData(new Date(valCalendar))
+    fetchData(new Date(calendar))
       .then((res) => {
         if (res !== null) {
           pushData(res.data);
+          console.log("posi");
         }
       })
       .catch((err) => {
         console.log("Error al cargar datos del calendario");
         console.log(err);
       });
-  }, [calendar]);
+  }, [calendar, check]);
 
   const pushData = (data) => {
     const dic = data.data;
@@ -100,7 +94,8 @@ const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
   };
 
   const fetchData = async (param = fecha) => {
-    const id = getId(urlBaseRtsp, urlStreaming);
+    // const id = getId(urlBaseRtsp, urlStreaming);
+    const id = check;
 
     try {
       const response = await axios.get(SERVER + "/fetch", {
@@ -155,6 +150,11 @@ const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
     const res = new Date(date);
     res.setDate(res.getDate() + days);
     return res;
+  };
+
+  const getAllCameras = async () => {
+    const response = await axios.get(SERVER + "/fetchAllCameras");
+    setSources(response.data.data);
   };
 
   const labels = [
@@ -215,7 +215,6 @@ const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
         <span className="text-green-600 font-bold"> infractores </span>
         por día y hora
       </p>
-      <NotificationContainer />
       <div className="flex justify-around mb-5">
         <button
           className="bg-white hover:bg-gray-400 hover:text-white text-gray-500 font-bold py-2 px-4 rounded"
@@ -231,6 +230,25 @@ const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
           value={calendar}
           onChange={(e) => setCalendar(e.target.value)}
         />
+
+        <select
+          className="border-2 px-2 placeholder-gray-400 rounded-md bg-white"
+          name="sources"
+          id="sources"
+          value={check}
+          onChange={(e) => setCheck(e.target.value)}
+        >
+          <option value="none" selected hidden>
+            Selecciona una cámara
+          </option>
+          {sources.map((source) => {
+            return (
+              <option key={source.ip} value={source.ip}>
+                {source.name}
+              </option>
+            );
+          })}
+        </select>
 
         <button
           className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"

@@ -9,7 +9,7 @@ import {
 import ReactPlayer from "react-player";
 
 // const SERVER_HTTP = "http://50.116.23.81";
-const SERVER_HTTP = "https://tidy-jeans-rhyme-34-143-176-62.loca.lt";
+const SERVER_HTTP = "https://eighty-rooms-care-34-143-176-62.loca.lt";
 const SERVER_RSTP = "http://173.255.219.215";
 
 const Streaming = ({
@@ -22,10 +22,12 @@ const Streaming = ({
   setUrlBaseRtsp,
 }) => {
   const [source, setSource] = useState("");
+  const [name, setName] = useState("");
 
   const openStream = async () => {
-    if (source === "") {
+    if ([source, name].includes("")) {
       NotificationManager.warning("Ingrese un URL o RTSP válido");
+      NotificationManager.warning("Todos los campos deben estar llenos");
       return;
     }
 
@@ -42,6 +44,7 @@ const Streaming = ({
         params: {
           stream_url: source,
           stream_save: id,
+          camera_name: name,
         },
       });
       setShow(true);
@@ -139,12 +142,21 @@ const Streaming = ({
 
       <div className="flex justify-center">
         <input
-          id="mascota"
+          id="source"
           type="text"
           placeholder="URL de tipo https:// o rtsp://"
-          className="border-2 w-1/3 p-2 placeholder-gray-400 rounded-md text-gray-500"
+          className="border-2 w-1/3 p-2 placeholder-gray-400 rounded-md text-gray-500 mr-2"
           value={source}
           onChange={(e) => setSource(e.target.value)}
+        />
+
+        <input
+          id="name"
+          type="text"
+          placeholder="Cámara en la Av. Argos G9-20"
+          className="border-2 w-1/3 p-2 placeholder-gray-400 rounded-md text-gray-500"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
 
         {!urlStreaming ? (
