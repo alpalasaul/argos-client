@@ -24,7 +24,7 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = "https://old-taxis-end-34-74-178-248.loca.lt";
+const SERVER = "https://mighty-oranges-shine-34-74-178-248.loca.lt";
 
 const Estadistica = ({ typeVideo }) => {
   const [fecha, setFecha] = useState(new Date());
