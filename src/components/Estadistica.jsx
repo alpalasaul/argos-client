@@ -189,7 +189,7 @@ const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
     datasets: [
       {
         fill: true,
-        label: "Objetos detectados con casco",
+        label: "Objetos detectados sin casco",
         // data: labels.map(() => faker.datatype.number({ min: 0, max: 10 })),
         data: infractores,
         borderColor: "rgb(21 128 61)",
@@ -198,7 +198,7 @@ const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
       },
       {
         fill: true,
-        label: "Objetos detectados sin casco",
+        label: "Objetos detectados con casco",
         // data: labels.map(() => faker.datatype.number({ min: 0, max: 10 })),
         data: noIfractores,
         borderColor: "rgb(55, 65, 81)",
