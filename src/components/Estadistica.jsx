@@ -24,7 +24,7 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = "https://mighty-oranges-shine-34-74-178-248.loca.lt";
+const SERVER = "https://fair-eagles-play-34-74-178-248.loca.lt";
 
 const Estadistica = ({ typeVideo }) => {
   const [fecha, setFecha] = useState(new Date());
@@ -49,6 +49,23 @@ const Estadistica = ({ typeVideo }) => {
   };
 
   useEffect(() => {
+    let interval = setInterval(() => {
+      fetchData()
+        .then((res) => {
+          if (res !== null) {
+            pushData(res.data);
+          }
+        })
+        .catch((err) => {
+          console.log("Error al cargar datos iniciales");
+          console.log(err);
+        });
+      console.log("actualizando");
+    }, 2000);
+    return () => clearInterval(interval);
+  });
+
+  useEffect(() => {
     getAllCameras();
     fetchData()
       .then((res) => {
@@ -67,7 +84,6 @@ const Estadistica = ({ typeVideo }) => {
       .then((res) => {
         if (res !== null) {
           pushData(res.data);
-          console.log("posi");
         }
       })
       .catch((err) => {
@@ -137,7 +153,6 @@ const Estadistica = ({ typeVideo }) => {
 
   const previusDate = () => {
     const paramFecha = addDaysToDate(fecha, -1);
-    console.log(paramFecha);
     fetchData(paramFecha).then((res) => {
       if (res !== null) {
         pushData(res.data);

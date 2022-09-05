@@ -12,6 +12,16 @@ const ListFrames = () => {
     getData();
   }, []);
 
+  useEffect(() => {
+    let interval = setInterval(() => {
+      if (counter === 1) {
+        console.log("actualizando");
+        getData();
+      }
+    }, 2000);
+    return () => clearInterval(interval);
+  });
+
   const getData = async () => {
     let fetchData = await listObjectsBucket();
     let res = fetchData.length / 6;
@@ -67,7 +77,6 @@ const ListFrames = () => {
           <span className="bg-white text-gray-500 font-bold py-2 px-4 rounded mx-1">
             Página: {counter}
           </span>
-
         </div>
 
         <button
