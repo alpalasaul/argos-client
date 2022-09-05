@@ -24,7 +24,7 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = "https://eighty-rooms-care-34-143-176-62.loca.lt";
+const SERVER = "https://old-taxis-end-34-74-178-248.loca.lt";
 
 const Estadistica = ({ typeVideo }) => {
   const [fecha, setFecha] = useState(new Date());
@@ -189,7 +189,7 @@ const Estadistica = ({ typeVideo }) => {
     datasets: [
       {
         fill: true,
-        label: "Objetos detectados con casco",
+        label: "Objetos detectados sin casco",
         // data: labels.map(() => faker.datatype.number({ min: 0, max: 10 })),
         data: infractores,
         borderColor: "rgb(21 128 61)",
@@ -198,7 +198,7 @@ const Estadistica = ({ typeVideo }) => {
       },
       {
         fill: true,
-        label: "Objetos detectados sin casco",
+        label: "Objetos detectados con casco",
         // data: labels.map(() => faker.datatype.number({ min: 0, max: 10 })),
         data: noIfractores,
         borderColor: "rgb(55, 65, 81)",
