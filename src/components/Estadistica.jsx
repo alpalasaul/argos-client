@@ -26,7 +26,7 @@ ChartJS.register(
 
 const SERVER = "https://eighty-rooms-care-34-143-176-62.loca.lt";
 
-const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
+const Estadistica = ({ typeVideo }) => {
   const [fecha, setFecha] = useState(new Date());
   const [calendar, setCalendar] = useState(fecha.toISOString().split("T")[0]);
   const [infractores, setInfractores] = useState([]);

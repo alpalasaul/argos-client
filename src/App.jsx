@@ -11,37 +11,6 @@ import Login from "./components/Login/Login";
 import useToken from "./useToken";
 import Estadistica from "./components/Estadistica";
 
-// function App() {
-
-//   const [urlStreaming, setUrlStreaming] = useState("")
-//   const [show, setShow] = useState(false)
-//   const [typeVideo, setTypeVideo] = useState("")
-
-//   return (
-//     <div className="container mx-auto mt-5">
-
-//       <BrowserRouter>
-//         <Routes>
-//           <Route path='/' element={<SharedLayout/>}>
-//           <Route index element={<Home/>}/>
-//             <Route path='videos' element={<ListFrame/>}/>
-//             <Route path='streaming' element={<Streaming
-//               urlStreaming={ urlStreaming }
-//               setUrlStreaming={ setUrlStreaming }
-//               show={show}
-//               setShow={setShow}
-//               typeVideo={typeVideo}
-//               setTypeVideo={setTypeVideo}
-//               />}/>
-//             <Route path='about' element={<About/>}/>
-//           </Route>
-//         </Routes>
-//       </BrowserRouter>
-
-//     </div>
-//   )
-// }
-
 function setToken(userToken) {
   sessionStorage.setItem("token", JSON.stringify(userToken));
 }
@@ -86,13 +55,7 @@ function App() {
             />
             <Route
               path="estadisticas"
-              element={
-                <Estadistica
-                  urlBaseRtsp={urlBaseRtsp}
-                  typeVideo={typeVideo}
-                  urlStreaming={urlStreaming}
-                />
-              }
+              element={<Estadistica typeVideo={typeVideo} />}
             />
             <Route path="about" element={<About />} />
           </Route>
