@@ -74,6 +74,7 @@ const Estadistica = ({ typeVideo }) => {
         console.log("Error al cargar datos del calendario");
         console.log(err);
       });
+    setFecha(new Date(calendar));
   }, [calendar, check]);
 
   const pushData = (data) => {
