@@ -24,7 +24,7 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = "https://eighty-rooms-care-34-143-176-62.loca.lt";
+const SERVER = "https://silly-showers-happen-34-81-41-157.loca.lt";
 
 const Estadistica = ({ urlBaseRtsp, typeVideo, urlStreaming }) => {
   const [fecha, setFecha] = useState(new Date());
