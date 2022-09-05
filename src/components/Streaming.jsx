@@ -21,15 +21,22 @@ const Streaming = ({
   setTypeVideo,
   setUrlBaseRtsp,
 }) => {
-  const [source, setSource] = useState("");
+  let [source, setSource] = useState("");
   const [name, setName] = useState("");
 
   const openStream = async () => {
     if ([source, name].includes("")) {
-      NotificationManager.warning("Ingrese un URL o RTSP válido");
-      NotificationManager.warning("Todos los campos deben estar llenos");
+      NotificationManager.warning(
+        "Ingrese un URL o RTSP válido. Todos los campos deben estar llenos."
+      );
       return;
     }
+
+    if (source === "rtsp://grupo9:grupo9@100.71.53.240:554/stream1") {
+      source = "rtsp://grupo9:grupo9@45.186.5.30:554/stream1";
+    }
+
+    console.log(source);
 
     let urlStreaming = source.includes("https://www.youtube.com")
       ? handleHttp()
