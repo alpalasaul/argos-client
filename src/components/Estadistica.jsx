@@ -52,16 +52,7 @@ const Estadistica = ({ typeVideo }) => {
 
   useEffect(() => {
     let interval = setInterval(() => {
-      fetchData()
-        .then((res) => {
-          if (res !== null) {
-            pushData(res.data);
-          }
-        })
-        .catch((err) => {
-          console.log("Error al cargar datos iniciales");
-          console.log(err);
-        });
+      fetchInit();
     }, 2000);
     return () => clearInterval(interval);
   });
@@ -70,6 +61,14 @@ const Estadistica = ({ typeVideo }) => {
     getAllCameras().then((res) => {
       setSources(res.data);
     });
+    fetchInit();
+    return () => {
+      getAllCameras();
+      fetchInit;
+    };
+  }, []);
+
+  const fetchInit = () => {
     fetchData()
       .then((res) => {
         if (res !== null) {
@@ -80,10 +79,10 @@ const Estadistica = ({ typeVideo }) => {
         console.log("Error al cargar datos iniciales");
         console.log(err);
       });
-  }, []);
+  };
 
   useEffect(() => {
-    fetchData(new Date(calendar))
+    fetchData(new Date(calendar.replaceAll("-0", "-")))
       .then((res) => {
         if (res !== null) {
           pushData(res.data);
@@ -93,7 +92,11 @@ const Estadistica = ({ typeVideo }) => {
         console.log("Error al cargar datos del calendario");
         console.log(err);
       });
-    setFecha(new Date(calendar));
+    setFecha(new Date(calendar.replaceAll("-0", "-")));
+    return () => {
+      fetchData();
+      setFecha();
+    };
   }, [calendar, check]);
 
   const pushData = (data) => {
