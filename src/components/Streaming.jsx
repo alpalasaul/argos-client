@@ -8,8 +8,8 @@ import {
 } from "react-notifications";
 import ReactPlayer from "react-player";
 
-// const SERVER_HTTP = "http://50.116.23.81";
-const SERVER_HTTP = "https://fair-eagles-play-34-74-178-248.loca.lt";
+const SERVER_HTTP = "http://50.116.23.81";
+// const SERVER_HTTP = "https://fair-eagles-play-34-74-178-248.loca.lt";
 const SERVER_RSTP = "http://173.255.219.215";
 
 const Streaming = ({

@@ -12,6 +12,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { getAllCameras, formatDate } from "../utils/utilities.js";
 
 ChartJS.register(
   CategoryScale,
@@ -24,7 +25,8 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = "https://fair-eagles-play-34-74-178-248.loca.lt";
+// const SERVER = "https://fair-eagles-play-34-74-178-248.loca.lt";
+const SERVER = "http://50.116.23.81";
 
 const Estadistica = ({ typeVideo }) => {
   const [fecha, setFecha] = useState(new Date());
@@ -60,13 +62,14 @@ const Estadistica = ({ typeVideo }) => {
           console.log("Error al cargar datos iniciales");
           console.log(err);
         });
-      console.log("actualizando");
     }, 2000);
     return () => clearInterval(interval);
   });
 
   useEffect(() => {
-    getAllCameras();
+    getAllCameras().then((res) => {
+      setSources(res.data);
+    });
     fetchData()
       .then((res) => {
         if (res !== null) {
@@ -145,8 +148,8 @@ const Estadistica = ({ typeVideo }) => {
     fetchData(paramFecha).then((res) => {
       if (res !== null) {
         pushData(res.data);
-        setFecha(addDaysToDate(fecha, 1));
-        setCalendar(addDaysToDate(fecha, 1).toISOString().split("T")[0]); // verificar si vale
+        setFecha(paramFecha);
+        setCalendar(paramFecha.toISOString().split("T")[0]); // verificar si vale
       }
     });
   };
@@ -156,8 +159,8 @@ const Estadistica = ({ typeVideo }) => {
     fetchData(paramFecha).then((res) => {
       if (res !== null) {
         pushData(res.data);
-        setFecha(addDaysToDate(fecha, -1));
-        setCalendar(addDaysToDate(fecha, -1).toISOString().split("T")[0]);
+        setFecha(paramFecha);
+        setCalendar(paramFecha.toISOString().split("T")[0]);
       }
     });
   };
@@ -166,11 +169,6 @@ const Estadistica = ({ typeVideo }) => {
     const res = new Date(date);
     res.setDate(res.getDate() + days);
     return res;
-  };
-
-  const getAllCameras = async () => {
-    const response = await axios.get(SERVER + "/fetchAllCameras");
-    setSources(response.data.data);
   };
 
   const labels = [

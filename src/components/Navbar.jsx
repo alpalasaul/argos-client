@@ -1,27 +1,28 @@
-import { Link, useNavigate } from "react-router-dom"
-import argos from './../assets/nav-argos.png'
+import { Link, useNavigate } from "react-router-dom";
+import argos from "./../assets/nav-argos.png";
 
 const Navbar = () => {
-
   const closeSession = () => {
-    sessionStorage.removeItem('token');
+    sessionStorage.removeItem("token");
     window.location.reload(false);
-  }
+  };
 
   return (
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded">
       <div className="container flex justify-between items-center mx-auto">
         <a href="/" className="flex items-center">
-          <img src={ argos } alt="Logo Argos" width="200px" hidden="80px" />
+          <img src={argos} alt="Logo Argos" width="200px" hidden="80px" />
         </a>
-        <div className="hidden w-full md:block md:w-auto justify-end" id="navbar-default">
+        <div
+          className="hidden w-full md:block md:w-auto justify-end"
+          id="navbar-default"
+        >
           <ul className="flex flex-col p-1 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-lg md:font-medium md:border-0 md:bg-white items-center">
-            
             <li>
               <Link to="/">Inicio</Link>
             </li>
             <li>
-              <Link to="/streaming">{'  '}En vivo</Link>
+              <Link to="/streaming">{"  "}En vivo</Link>
             </li>
             <li>
               <Link to="/videos">Almacén</Link>
@@ -33,15 +34,19 @@ const Navbar = () => {
               <Link to="/about">Acerca de</Link>
             </li> */}
             <li>
-              <button className="bg-green-600 hover:bg-green-700 text-white px-2 py-1 rounded ml-2" onClick={closeSession}>Cerrar sesión</button>
+              <button
+                className="bg-green-600 hover:bg-green-700 text-white px-2 py-1 rounded ml-2"
+                onClick={closeSession}
+              >
+                Cerrar sesión
+              </button>
               {/* <Link to="/">Cerrar sesión</Link> */}
             </li>
           </ul>
         </div>
-
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
