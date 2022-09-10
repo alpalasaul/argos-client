@@ -1,3 +1,1 @@
-if (global === undefined) {
-  var global = window;
-}
+window.global = window;
