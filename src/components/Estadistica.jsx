@@ -255,7 +255,7 @@ const Estadistica = ({ typeVideo }) => {
           value={check}
           onChange={(e) => setCheck(e.target.value)}
         >
-          <option value="none" selected hidden>
+          <option value="none" hidden>
             Selecciona una cámara
           </option>
           {sources.map((source) => {
