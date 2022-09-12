@@ -201,7 +201,7 @@ const Streaming = ({
             )}
           </div>
           <div className="flex justify-center mt-5">
-            <div className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded ml-2">
+            <div className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2">
               <Link to="/videos">Ver detecciones de casco</Link>
             </div>
           </div>
