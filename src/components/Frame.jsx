@@ -73,7 +73,7 @@ const Frame = ({ bucket }) => {
         >
           <div className="text-center">
             <div className="flex justify-around text-lg">
-              <p className="uppercase">{id.replace(".mp4", "")}</p>
+              <p className="uppercase">{id.split("_")[1].replace(".mp4", "")}</p>
               <p>{formatDate(date)}</p>
             </div>
 
