@@ -30,7 +30,7 @@ const SERVER = "http://50.116.23.81";
 
 const Estadistica = ({ typeVideo }) => {
   const [fecha, setFecha] = useState(new Date());
-  const [calendar, setCalendar] = useState(fecha.toISOString().split("T")[0]);
+  const [calendar, setCalendar] = useState(formatDate(fecha));
   const [infractores, setInfractores] = useState([]);
   const [noIfractores, setNoInfractores] = useState([]);
   const [check, setCheck] = useState("");
@@ -45,7 +45,7 @@ const Estadistica = ({ typeVideo }) => {
       maintainAspectRatio: false,
       title: {
         display: true,
-        text: fecha.toISOString().split("T")[0],
+        text: formatDate(fecha),
       },
     },
   };
@@ -123,7 +123,7 @@ const Estadistica = ({ typeVideo }) => {
     try {
       const response = await axios.get(SERVER + "/fetch", {
         params: {
-          date: param.toISOString().split("T")[0].replace("2022", "22"),
+          date: formatDate(param).replace("2022", "22"),
           camara: id,
         },
       });
@@ -152,7 +152,7 @@ const Estadistica = ({ typeVideo }) => {
       if (res !== null) {
         pushData(res.data);
         setFecha(paramFecha);
-        setCalendar(paramFecha.toISOString().split("T")[0]); // verificar si vale
+        setCalendar(formatDate(paramFecha)); // verificar si vale
       }
     });
   };
