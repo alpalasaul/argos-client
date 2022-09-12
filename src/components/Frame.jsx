@@ -38,7 +38,7 @@ const Frame = ({ bucket }) => {
   return (
     <div className="bg-white shadow-md rounded-lg py-5 px-5 text-center mx-2 my-2 text-gray-500">
       <div className="flex justify-between mx-4">
-        <p className="uppercase">{id.replace(".mp4", "")}</p>
+        <p className="uppercase">{id.split("_")[1].replace(".mp4", "")}</p>
         <p>{formatDate(date)}</p>
       </div>
 

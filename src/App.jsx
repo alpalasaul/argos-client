@@ -11,16 +11,6 @@ import Login from "./components/Login/Login";
 import useToken from "./useToken";
 import Estadistica from "./components/Estadistica";
 
-function setToken(userToken) {
-  sessionStorage.setItem("token", JSON.stringify(userToken));
-}
-
-function getToken() {
-  const tokenString = sessionStorage.getItem("token");
-  const userToken = JSON.parse(tokenString);
-  return userToken?.token;
-}
-
 function App() {
   const { token, setToken } = useToken();
   const [urlStreaming, setUrlStreaming] = useState("");

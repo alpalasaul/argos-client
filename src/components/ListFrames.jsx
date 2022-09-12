@@ -69,7 +69,7 @@ const ListFrames = () => {
     const dataFilter = fetchData.filter((bucket) => {
       const { id: name, date } = bucket;
       const fecha = formatDate(new Date(date * 1000));
-      return fecha === calendar; // && name.split("_")[0] === check;
+      return fecha === calendar && name.split("_")[0] === check;
     });
     return dataFilter;
   };

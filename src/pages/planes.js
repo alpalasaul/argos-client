@@ -10,7 +10,7 @@ export default [
         mail: "¡Contrata aquí!"
     },
     {
-        id: "q23as7asd89as9d8g",
+        id: "q23as7asd89as9d8",
         src: "https://images.unsplash.com/photo-1626289535731-613d819dc4c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
         assignment: "Plan Premium",
         name: "Detalles del plan",
@@ -20,7 +20,7 @@ export default [
         mail: "¡Contrata aquí!"
     },
     {
-        id: "q23as7asd89as9d8g",
+        id: "q23as7asd8as9d8g",
         src: "https://images.unsplash.com/photo-1557463008-9e9f17d00bd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
         assignment: "Plan Gold",
         name: "Detalles del plan",

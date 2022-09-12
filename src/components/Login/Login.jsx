@@ -1,22 +1,34 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import "react-notifications/lib/notifications.css";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+
 import "./Login.css";
 import argos from "./../../assets/home-args.png";
 
-const SERVER = "http://localhost:8080";
+const SERVER = "http://170.187.144.166";
 
 async function loginUser(credentials) {
+
   const { username, password } = credentials;
 
-  return { token: "as9d8f 89asdfhaosdf3o245n23lj4n5235k24ñlk5n" };
-
-  // return axios
-  //   .post(SERVER + "/auth/login", {
-  //     username,
-  //     password,
-  //   })
-  //   .then((res) => res.data);
+  if ([username, password].includes("")) {
+    NotificationManager.warning("Todos los campos son necesarios");
+    return
+  }
+  
+  let response = "";
+  try {
+    const token = await axios.post(SERVER + "/auth/login", {username, password})
+    response = token.data
+  } catch (err) {
+    NotificationManager.error("Los datos ingresados son incorrectos");
+  }
+  return response
 }
 
 const Login = ({ setToken }) => {
@@ -34,6 +46,9 @@ const Login = ({ setToken }) => {
 
   return (
     <div className="relative min-h-screen flex">
+
+      <NotificationContainer />
+
       <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-white">
         <div
           className="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-purple-900 text-white bg-no-repeat bg-cover relative"
