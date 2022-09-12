@@ -61,7 +61,9 @@ const Register = ({ setIsNewUser }) => {
         <h2 className="mt-6 text-3xl font-bold text-gray-900">
           ¡Crea una nueva cuenta!
         </h2>
-        <p className="mt-2 text-sm text-gray-500">Es rápido y fácil</p>
+        <p className="mt-2 text-sm text-gray-500">
+          Es rápido y sencillo para comenzar a monitorear hoy mismo
+        </p>
       </div>
       <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
         <input type="hidden" name="remember" value="true" />
@@ -117,14 +119,15 @@ const Register = ({ setIsNewUser }) => {
             Crear cuenta
           </button>
         </div>
-        <div className="flex flex-col items-center">
+        <p className="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-500">
+          <span>¿Ya tienes cuenta?</span>
           <button
             onClick={() => setIsNewUser(false)}
             className="text-indigo-400 hover:text-blue-500 no-underline hover:underline cursor-pointer transition ease-in duration-300"
           >
-            Iniciar sesión
+            Inicia sesión
           </button>
-        </div>
+        </p>
       </form>
     </div>
   );
