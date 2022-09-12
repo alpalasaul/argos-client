@@ -25,8 +25,8 @@ ChartJS.register(
   Legend
 );
 
-// const SERVER = "https://fair-eagles-play-34-74-178-248.loca.lt";
-const SERVER = "http://50.116.23.81";
+const SERVER = "https://thin-comics-design-35-227-175-236.loca.lt";
+// const SERVER = "http://50.116.23.81";
 
 const Estadistica = ({ typeVideo }) => {
   const [fecha, setFecha] = useState(new Date());
