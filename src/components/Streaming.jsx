@@ -9,7 +9,7 @@ import {
 import ReactPlayer from "react-player";
 
 // const SERVER_HTTP = "http://50.116.23.81";
-const SERVER_HTTP = "https://thin-comics-design-35-227-175-236.loca.lt";
+const SERVER_HTTP = "http://famous-colts-roll-34-105-60-142.loca.lt";
 const SERVER_RSTP = "http://173.255.219.215";
 
 const Streaming = ({

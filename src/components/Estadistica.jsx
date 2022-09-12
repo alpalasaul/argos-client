@@ -25,7 +25,7 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = "https://thin-comics-design-35-227-175-236.loca.lt";
+const SERVER = "http://famous-colts-roll-34-105-60-142.loca.lt";
 // const SERVER = "http://50.116.23.81";
 
 const Estadistica = ({ typeVideo }) => {
