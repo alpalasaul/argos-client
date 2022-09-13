@@ -25,7 +25,7 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = "https://red-emus-dance-35-229-248-138.loca.lt";
+const SERVER = "https://public-bushes-laugh-35-221-175-95.loca.lt";
 // const SERVER = "http://50.116.23.81";
 
 const Estadistica = ({ typeVideo }) => {
