@@ -25,7 +25,7 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = "http://famous-colts-roll-34-105-60-142.loca.lt";
+const SERVER = "https://red-emus-dance-35-229-248-138.loca.lt";
 // const SERVER = "http://50.116.23.81";
 
 const Estadistica = ({ typeVideo }) => {
