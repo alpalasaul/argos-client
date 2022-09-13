@@ -6,7 +6,7 @@ import cam from './../assets/cam.png'
 import ia from './../assets/ia.png'
 import argos from './../assets/nav-argos.png'
 import Card from './Card'
-import data from "./planes.js"
+import data from './Data/planes.js'
 
 const Home = () => {
   return (

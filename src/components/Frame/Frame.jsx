@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Modal from "react-modal";
-import poster from "./../assets/loading2.gif";
+import poster from "./../../assets/loading2.gif";
 
 const customStyles = {
   content: {

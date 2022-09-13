@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import argos from "./../assets/nav-argos.png";
+import argos from "./../../assets/nav-argos.png";
 
 const Navbar = () => {
   const closeSession = () => {

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Frame from "./Frame";
-import listObjectsBucket from "./../utils/aws-exports.js";
-import { getAllCameras, formatDate } from "../utils/utilities.js";
-import Spinner from "./Spinner";
+import Frame from "./../Frame/Frame";
+import listObjectsBucket from "./../../utils/aws-exports.js";
+import { getAllCameras, formatDate } from "../../utils/utilities.js";
+import Spinner from "./../Layouts/Spinner";
 
 const ListFrames = () => {
   const [numPage, setNumPage] = useState(0);

@@ -1,15 +1,15 @@
-import ListFrame from "./components/ListFrames";
+import ListFrame from "./components/ListFrames/ListFrames";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import SharedLayout from "./components/SharedLayout";
-import Streaming from "./components/Streaming";
+import Home from './pages/Home'
+import SharedLayout from "./components/Layouts/SharedLayout";
+import Streaming from "./components/Streaming/Streaming";
 import About from "./pages/About";
 import { useState } from "react";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Preferences from "./components/Preferences/Preferences";
 import Login from "./components/Login/Login";
 import useToken from "./useToken";
-import Estadistica from "./components/Estadistica";
+import Estadistica from "./components/Estadistica/Estadistica";
 
 function App() {
   const { token, setToken } = useToken();
