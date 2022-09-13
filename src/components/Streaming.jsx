@@ -8,8 +8,7 @@ import {
 } from "react-notifications";
 import ReactPlayer from "react-player";
 
-// const SERVER_HTTP = "http://50.116.23.81";
-const SERVER_HTTP = "https://public-bushes-laugh-35-221-175-95.loca.lt";
+const SERVER_HTTP = "http://50.116.23.81";
 const SERVER_RSTP = "http://173.255.219.215";
 
 const Streaming = ({
@@ -31,12 +30,6 @@ const Streaming = ({
       );
       return;
     }
-
-    if (source === "rtsp://grupo9:grupo9@100.71.53.240:554/stream1") {
-      source = "rtsp://grupo9:grupo9@45.186.5.30:554/stream1";
-    }
-
-    console.log(source);
 
     let urlStreaming = source.includes("https://www.youtube.com")
       ? handleHttp()

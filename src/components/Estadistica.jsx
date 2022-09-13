@@ -25,8 +25,7 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = "https://public-bushes-laugh-35-221-175-95.loca.lt";
-// const SERVER = "http://50.116.23.81";
+const SERVER = "http://50.116.23.81";
 
 const Estadistica = ({ typeVideo }) => {
   const [fecha, setFecha] = useState(new Date());
