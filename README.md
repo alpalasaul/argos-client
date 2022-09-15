@@ -1,4 +1,4 @@
-# ARGOS
+<div align="center"><h1>ARGOS</h1></div>
 <p align="center">Sistema de detección en tiempo real de personas con o sin casco</p>
 <div align="center">
   <img src="https://github.com/alpalasaul/argos-client/blob/master/src/assets/home-args.png" />
