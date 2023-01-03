@@ -25,7 +25,7 @@ ChartJS.register(
   Legend
 );
 
-const SERVER = "http://50.116.23.81";
+const SERVER = "https://orange-deer-lead-34-82-201-161.loca.lt";
 
 const Estadistica = ({ typeVideo }) => {
   const [fecha, setFecha] = useState(new Date());
