@@ -1,7 +1,6 @@
-import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import argos from "./../assets/nav-argos.png";
 
@@ -45,37 +44,40 @@ const Navbar2 = () => {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <img
-                    className="block h-8 w-auto lg:hidden"
+                    className="block h-20 w-auto lg:hidden"
                     src={argos}
                     alt="Argos Logo"
                     width="200px"
                     hidden="80px"
                   />
                   <img
-                    className="hidden h-8 w-auto lg:block"
+                    className="hidden h-20 w-auto lg:block"
                     src={argos}
                     alt="Argos Logo"
                     width="200px"
                     hidden="80px"
                   />
                 </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4 font-medium text-lg">
-                    {navigation.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.href}
-                        className={classNames(
+
+                <div className="flex items-center">
+                  <div className="hidden sm:ml-6 sm:block">
+                    <div className="flex space-x-4 font-medium text-lg">
+                      {navigation.map((item) => (
+                        <Link
+                          key={item.name}
+                          to={item.href}
+                          className={classNames(
                             location.pathname === item.href
                               ? "bg-green-600 text-white"
                               : "text-black hover:bg-gray-100 hover:text-green-600",
                             "block px-3 py-2 rounded-md text-base font-medium"
                           )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                          aria-current={item.current ? "page" : undefined}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
