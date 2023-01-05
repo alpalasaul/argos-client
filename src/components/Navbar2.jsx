@@ -41,7 +41,7 @@ const Navbar2 = () => {
                 </Disclosure.Button>
               </div>
 
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+              <div className="flex flex-1 items-center justify-center sm:items-center sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="block h-20 w-auto lg:hidden"
@@ -59,25 +59,23 @@ const Navbar2 = () => {
                   />
                 </div>
 
-                <div className="flex items-center">
-                  <div className="hidden sm:ml-6 sm:block">
-                    <div className="flex space-x-4 font-medium text-lg">
-                      {navigation.map((item) => (
-                        <Link
-                          key={item.name}
-                          to={item.href}
-                          className={classNames(
-                            location.pathname === item.href
-                              ? "bg-green-600 text-white"
-                              : "text-black hover:bg-gray-100 hover:text-green-600",
-                            "block px-3 py-2 rounded-md text-base font-medium"
-                          )}
-                          aria-current={item.current ? "page" : undefined}
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
+                <div className="hidden sm:ml-6 sm:block">
+                  <div className="flex space-x-4 font-medium text-lg">
+                    {navigation.map((item) => (
+                      <Link
+                        key={item.name}
+                        to={item.href}
+                        className={classNames(
+                          location.pathname === item.href
+                            ? "bg-green-600 text-white"
+                            : "text-black hover:bg-gray-100 hover:text-green-600",
+                          "block px-3 py-2 rounded-md text-base font-medium"
+                        )}
+                        aria-current={item.current ? "page" : undefined}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -104,7 +102,7 @@ const Navbar2 = () => {
                     location.pathname === item.href
                       ? "bg-green-600 text-white"
                       : "text-black hover:bg-gray-100 hover:text-green-600",
-                    "block px-3 py-2 rounded-md text-base font-medium"
+                    "flex px-3 py-2 rounded-md text-base font-medium justify-center"
                   )}
                   aria-current={item.current ? "page" : undefined}
                 >
